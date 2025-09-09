@@ -1,209 +1,515 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Undangan Pernikahan - Mila & Redi</title>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   The Wedding of Mila Karmila and Redi Irawan
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&amp;family=Montserrat:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
   <style>
-    body { font-family: 'Segoe UI', sans-serif; margin:0; padding:0; background:#faf7f2; color:#333; overflow-x:hidden; }
-
-    /* Cover Page */
-    #cover {
-      position:fixed; inset:0; z-index:9999;
-      background:url('images/foto1.jpg') center/cover no-repeat; /* GANTI FOTO DISINI */
-      display:flex; flex-direction:column; justify-content:center; align-items:center;
-      text-align:center; color:#fff;
+   body {
+      font-family: "Montserrat", sans-serif;
+      background-color: #fef9f4;
+      color: #4a4a4a;
+      scroll-behavior: smooth;
     }
-    #cover::after {
-      content:''; position:absolute; inset:0; background:rgba(0,0,0,0.4);
+    h1,
+    h2,
+    h3 {
+      font-family: "Great Vibes", cursive;
     }
-    #cover .content { position:relative; z-index:1; padding:20px; }
-    #cover h1 { font-size:28px; margin:10px 0; }
-    #cover h2 { font-size:20px; margin:5px 0; }
-    #cover p { margin:8px 0; font-size:16px; }
-    #cover button {
-      background:transparent; border:2px solid #fff; color:#fff;
-      padding:10px 20px; border-radius:25px; font-size:16px; cursor:pointer;
+    /* Navbar underline effect */
+    nav a {
+      position: relative;
+      font-weight: 600;
+      color: #4a4a4a;
+      transition: color 0.3s ease;
     }
-    #particles-js { position:absolute; inset:0; z-index:0; }
-
-    /* Konten utama */
-    #main { display:none; }
-    header.hero {
-      text-align:center; padding:60px 20px;
-      background:url('images/foto2.jpg') center/cover fixed; /* GANTI FOTO DISINI */
-      color:#fff; position:relative;
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -6px;
+      left: 0;
+      background-color: #bfa06a;
+      transition: width 0.3s ease;
+      border-radius: 2px;
     }
-    header.hero::after { content:''; position:absolute; inset:0; background:rgba(0,0,0,0.4); }
-    header.hero > div { position:relative; z-index:1; }
-    h1 { font-size:36px; margin:0; color:#fff; }
-    h2 { font-size:20px; margin:10px 0; color:#ddd; }
-    p { font-size:16px; }
-    .countdown { display:flex; justify-content:center; gap:10px; margin-top:20px; flex-wrap:wrap; }
-    .cd-box { background:#fff; color:#333; padding:8px 12px; border-radius:10px; border:1px solid #ddd; text-align:center; min-width:60px; }
-    .cd-box b { font-size:18px; display:block; }
-    section { padding:40px 20px; text-align:center; position:relative; }
-    .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:10px; }
-    .gallery img { width:100%; border-radius:10px; }
-    .btn { background:#7b5f8e; color:#fff; border:none; padding:10px 16px; border-radius:8px; cursor:pointer; font-size:14px; }
-    footer { padding:20px; background:#2b2b2b; color:#fff; text-align:center; font-size:14px; }
-    .sticky-music { position:fixed; bottom:15px; right:15px; z-index:1000; }
-    .toast{position:fixed;top:16px;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:8px 12px;border-radius:8px;opacity:0;transition:.4s;font-size:14px}
-    .toast.show{opacity:1}
-  </style>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-</head>
-<body>
-  <!-- Cover Page -->
-  <div id="cover">
-    <div id="particles-js"></div>
-    <div class="content">
-      <h2>You're Invited</h2>
-      <h1>The Wedding Of</h1>
-      <h2>Mila & Redi</h2>
-      <p>Kepada Yth.</p>
-      <p id="guestName">Tamu Undangan</p>
-      <button onclick="openInvitation()">📖 Buka Undangan</button>
-    </div>
-  </div>
-
-  <!-- Musik -->
-  <audio id="bgMusic" src="https://cdn.pixabay.com/download/audio/2023/03/06/audio_c83d292743.mp3?filename=wedding-piano-144998.mp3" loop></audio>
-  <div class="sticky-music" style="display:none;">
-    <button class="btn" onclick="toggleMusic()" id="musicBtn">🎵 Play Musik</button>
-  </div>
-
-  <!-- Main Content -->
-  <div id="main">
-    <header class="hero">
-      <div>
-        <h1>Mila & Redi</h1>
-        <h2>Sabtu, 20 Desember 2025</h2>
-        <div class="countdown" id="countdown">
-          <div class="cd-box"><b id="days">00</b>Hari</div>
-          <div class="cd-box"><b id="hours">00</b>Jam</div>
-          <div class="cd-box"><b id="minutes">00</b>Menit</div>
-          <div class="cd-box"><b id="seconds">00</b>Detik</div>
-        </div>
-      </div>
-    </header>
-
-    <section data-aos="fade-up">
-      <h2>Assalamualaikum Warahmatullahi Wabarakatuh</h2>
-      <p>Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan pernikahan putra-putri kami.</p>
-    </section>
-
-    <section data-aos="zoom-in">
-      <h2>Mempelai</h2>
-      <p><strong>Mila Karmila</strong><br>Putri dari Bapak ... & Ibu ...</p>
-      <p>&amp;</p>
-      <p><strong>Redi Irawan</strong><br>Putra dari Bapak ... & Ibu ...</p>
-    </section>
-
-    <section data-aos="fade-right">
-      <h2>Akad Nikah</h2>
-      <p>Sabtu, 20 Desember 2025 pukul 09.00 WIB</p>
-      <p>Jl. Contoh Alamat, Bandung</p>
-    </section>
-
-    <section data-aos="fade-left">
-      <h2>Resepsi</h2>
-      <p>Sabtu, 20 Desember 2025 pukul 11.00 - 14.00 WIB</p>
-      <p>Jl. Contoh Alamat, Bandung</p>
-    </section>
-
-    <section data-aos="fade-up">
-      <h2>Lokasi</h2>
-      <iframe class="map-embed" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.0927!2d107.6098!3d-6.9175" width="100%" height="250" style="border:0;border-radius:12px;" allowfullscreen=""></iframe>
-    </section>
-
-    <section data-aos="fade-up">
-      <h2>Galeri</h2>
-      <div class="gallery">
-        <img src="images/foto3.jpg" alt="foto1"> <!-- GANTI FOTO DISINI -->
-        <img src="images/foto4.jpg" alt="foto2"> <!-- GANTI FOTO DISINI -->
-        <img src="images/foto5.jpg" alt="foto3"> <!-- GANTI FOTO DISINI -->
-        <img src="images/foto6.jpg" alt="foto4"> <!-- GANTI FOTO DISINI -->
-      </div>
-    </section>
-
-    <section data-aos="fade-up">
-      <h2>Amplop Digital</h2>
-      <p>Transfer ke rekening berikut:</p>
-      <p><strong>123456789</strong> (Bank BNI - a.n. Mila)</p>
-      <button class="btn" onclick="copyRek()">Salin Nomor Rekening</button>
-    </section>
-
-    <section data-aos="fade-up">
-      <h2>Konfirmasi Kehadiran</h2>
-      <a class="btn" href="https://wa.me/6281234567890?text=Saya%20akan%20hadir">Konfirmasi via WhatsApp</a>
-    </section>
-
-    <footer>
-      <p>Terima kasih atas doa dan kehadiran Anda 🙏</p>
-      <p>© 2025 Mila & Redi</p>
-    </footer>
-  </div>
-
-  <div id="toast" class="toast">Nomor rekening tersalin!</div>
-
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 1000, once:true });
-
-    // Ambil nama tamu dari URL ?to=Nama
-    const params = new URLSearchParams(window.location.search);
-    const guest = params.get("to");
-    if(guest) document.getElementById("guestName").textContent = guest;
-
-    function openInvitation(){
-      document.getElementById("cover").style.display = "none";
-      document.getElementById("main").style.display = "block";
-      document.querySelector(".sticky-music").style.display = "block";
-      document.getElementById("bgMusic").play();
-      document.getElementById("musicBtn").textContent = "🎵 Pause Musik";
+    nav a:hover,
+    nav a:focus {
+      color: #bfa06a;
+      outline: none;
     }
-
-    function toggleMusic(){
-      const audio = document.getElementById("bgMusic");
-      const btn = document.getElementById("musicBtn");
-      if(audio.paused){
-        audio.play();
-        btn.textContent = "🎵 Pause Musik";
-      } else {
-        audio.pause();
-        btn.textContent = "🎵 Play Musik";
+    nav a:hover::after,
+    nav a:focus::after {
+      width: 100%;
+    }
+    /* Hero overlay gradient */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(254, 249, 244, 0.9) 0%,
+        rgba(254, 249, 244, 0.95) 60%,
+        rgba(254, 249, 244, 1) 100%
+      );
+      z-index: 10;
+    }
+    /* Scroll down bounce */
+    @keyframes bounce {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(10px);
       }
     }
-
-    // Countdown
-    const targetDate = new Date("Dec 20, 2025 09:00:00").getTime();
-    setInterval(function(){
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-      const days = Math.floor(distance / (1000*60*60*24));
-      const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
-      const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
-      const seconds = Math.floor((distance % (1000*60))/1000);
-      document.getElementById("days").textContent = days;
-      document.getElementById("hours").textContent = hours;
-      document.getElementById("minutes").textContent = minutes;
-      document.getElementById("seconds").textContent = seconds;
-    },1000);
-
-    function copyRek(){
-      navigator.clipboard.writeText("123456789");
-      const toast=document.getElementById("toast");
-      toast.classList.add("show");
-      setTimeout(()=>toast.classList.remove("show"),2000);
+    .scroll-down {
+      animation: bounce 2s infinite;
+      color: #bfa06a;
     }
+    /* Button style */
+    .btn-primary {
+      background-color: #bfa06a;
+      color: white;
+      font-weight: 700;
+      border-radius: 9999px;
+      padding: 0.75rem 2.5rem;
+      box-shadow: 0 4px 15px rgba(191, 160, 106, 0.5);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: #a38644;
+      box-shadow: 0 6px 20px rgba(163, 134, 68, 0.7);
+      outline: none;
+    }
+    /* Section title with underline */
+    .section-title {
+      font-family: "Great Vibes", cursive;
+      font-size: 2.75rem;
+      color: #bfa06a;
+      position: relative;
+      margin-bottom: 1.5rem;
+      user-select: none;
+    }
+    .section-title::after {
+      content: "";
+      position: absolute;
+      width: 70px;
+      height: 3px;
+      background-color: #bfa06a;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+    /* Invitation card style */
+    .invitation-card {
+      background: white;
+      border-radius: 1rem;
+      border: 1px solid #e6d9b8;
+      box-shadow: 0 8px 20px rgba(191, 160, 106, 0.3);
+      padding: 2rem;
+      text-align: center;
+      user-select: none;
+      transition: transform 0.3s ease;
+    }
+    .invitation-card:hover,
+    .invitation-card:focus-within {
+      transform: translateY(-6px);
+      outline: none;
+    }
+    .invitation-card img {
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 2px 2px rgba(191, 160, 106, 0.4));
+    }
+    /* Gallery scroll snap */
+    .gallery-scroll {
+      scroll-snap-type: x mandatory;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .gallery-scroll::-webkit-scrollbar {
+      display: none;
+    }
+    .gallery-item {
+      scroll-snap-align: center;
+      flex: 0 0 auto;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px rgba(191, 160, 106, 0.3);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+    .gallery-item:hover,
+    .gallery-item:focus {
+      transform: scale(1.05);
+      outline: none;
+      box-shadow: 0 12px 30px rgba(191, 160, 106, 0.5);
+    }
+    /* RSVP form */
+    form label {
+      font-weight: 600;
+      user-select: none;
+    }
+    form input,
+    form select,
+    form textarea {
+      border: 1.5px solid #d7cfa8;
+      border-radius: 0.5rem;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      font-family: inherit;
+      color: #4a4a4a;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      resize: vertical;
+    }
+    form input:focus,
+    form select:focus,
+    form textarea:focus {
+      outline: none;
+      border-color: #bfa06a;
+      box-shadow: 0 0 8px rgba(191, 160, 106, 0.6);
+    }
+    /* Footer social icons */
+    .social-icon {
+      color: #bfa06a;
+      transition: color 0.3s ease;
+      user-select: none;
+    }
+    .social-icon:hover,
+    .social-icon:focus {
+      color: #a38644;
+      outline: none;
+    }
+    /* Mobile menu */
+    #mobile-menu {
+      background-color: rgba(254, 249, 244, 0.95);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      font-weight: 700;
+      font-size: 1.5rem;
+      user-select: none;
+    }
+    #mobile-menu a {
+      color: #4a4a4a;
+      position: relative;
+    }
+    #mobile-menu a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -6px;
+      left: 0;
+      background-color: #bfa06a;
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+    #mobile-menu a:hover,
+    #mobile-menu a:focus {
+      color: #bfa06a;
+      outline: none;
+    }
+    #mobile-menu a:hover::after,
+    #mobile-menu a:focus::after {
+      width: 100%;
+    }
+  </style>
+ </head>
+ <body class="relative bg-[#fef9f4] text-[#4a4a4a]">
+  <!-- Navbar -->
+  <nav aria-label="Primary Navigation" class="fixed top-0 left-0 right-0 bg-white bg-opacity-90 backdrop-blur-md shadow-md z-50" role="navigation">
+   <div class="max-w-7xl mx-auto flex items-center justify-between px-6 sm:px-12 md:px-24 h-16">
+    <a class="text-3xl font-great-vibes text-[#bfa06a] select-none" href="#home" style="font-family: 'Great Vibes', cursive">
+     Mila &amp; Redi
+    </a>
+    <ul class="hidden md:flex space-x-10 text-sm">
+     <li>
+      <a href="#home" tabindex="0">
+       Home
+      </a>
+     </li>
+     <li>
+      <a href="#story" tabindex="0">
+       Our Story
+      </a>
+     </li>
+     <li>
+      <a href="#event" tabindex="0">
+       Event
+      </a>
+     </li>
+     <li>
+      <a href="#gallery" tabindex="0">
+       Gallery
+      </a>
+     </li>
+     <li>
+      <a href="#rsvp" tabindex="0">
+       RSVP
+      </a>
+     </li>
+     <li>
+      <a href="#contact" tabindex="0">
+       Contact
+      </a>
+     </li>
+    </ul>
+    <button aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu" class="md:hidden text-[#bfa06a] focus:outline-none focus:ring-2 focus:ring-[#bfa06a]" id="mobile-menu-button">
+     <i class="fas fa-bars fa-lg">
+     </i>
+    </button>
+   </div>
+   <div aria-label="Mobile Navigation Menu" class="flex flex-col items-center justify-center space-y-8 text-2xl font-semibold" id="mobile-menu" role="menu">
+    <a href="#home" role="menuitem" tabindex="-1">
+     Home
+    </a>
+    <a href="#story" role="menuitem" tabindex="-1">
+     Our Story
+    </a>
+    <a href="#event" role="menuitem" tabindex="-1">
+     Event
+    </a>
+    <a href="#gallery" role="menuitem" tabindex="-1">
+     Gallery
+    </a>
+    <a href="#rsvp" role="menuitem" tabindex="-1">
+     RSVP
+    </a>
+    <a href="#contact" role="menuitem" tabindex="-1">
+     Contact
+    </a>
+   </div>
+  </nav>
+  <!-- Hero Section -->
+  <section class="relative h-screen flex flex-col justify-center items-center text-center px-6 sm:px-12 md:px-24 pt-20 select-none" id="home">
+   <img alt="Elegant wedding background with floral decorations and soft warm lighting, golden hues and subtle bokeh" class="absolute inset-0 w-full h-full object-cover object-center -z-10" height="1080" loading="lazy" src="https://storage.googleapis.com/a1aa/image/6f78fc99-eaba-4ac5-5465-105b1a21406b.jpg" width="1920"/>
+   <div class="hero-overlay">
+   </div>
+   <h1 class="text-5xl sm:text-6xl md:text-7xl font-great-vibes text-[#bfa06a] leading-tight hero-text-shadow" style="text-shadow: 0 2px 4px rgba(0,0,0,0.15)">
+    The Wedding of
+   </h1>
+   <h2 class="text-7xl sm:text-8xl md:text-9xl font-great-vibes text-[#bfa06a] leading-tight hero-text-shadow mt-2" style="text-shadow: 0 2px 4px rgba(0,0,0,0.15)">
+    Mila Karmila &amp; Redi Irawan
+   </h2>
+   <p class="mt-6 text-lg sm:text-xl md:text-2xl text-[#4a4a4a] max-w-3xl font-semibold tracking-wide">
+    Saturday, 15th June 2024
+    <br/>
+    At The Grand Ballroom, Jakarta
+   </p>
+   <a aria-label="RSVP Now" class="btn-primary mt-10 inline-block" href="#rsvp">
+    RSVP Now
+   </a>
+   <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+    <i aria-hidden="true" class="fas fa-chevron-down fa-2x scroll-down">
+    </i>
+   </div>
+  </section>
+  <!-- Our Story Section -->
+  <section aria-labelledby="our-story-title" class="max-w-7xl mx-auto px-6 sm:px-12 md:px-24 py-20" id="story">
+   <h2 class="section-title text-center mb-12 select-none" id="our-story-title">
+    Our Story
+   </h2>
+   <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <div>
+     <img alt="Mila and Redi smiling together in a sunlit garden with flowers and greenery, joyful and candid moment" class="rounded-xl shadow-lg w-full object-cover object-center" height="400" loading="lazy" src="https://storage.googleapis.com/a1aa/image/d452eb89-bbfc-478b-90db-4d1fce4ddd94.jpg" width="600"/>
+    </div>
+    <div class="text-[#4a4a4a] text-lg leading-relaxed font-semibold">
+     <p>
+      It all started on a beautiful spring day when Mila and Redi met at a
+          mutual friend's gathering. Their connection was instant, filled with
+          laughter, shared dreams, and a love for adventure.
+     </p>
+     <p class="mt-4">
+      Over the years, their bond grew stronger through countless memories,
+          travels, and unwavering support. Now, they invite you to celebrate
+          the beginning of their forever.
+     </p>
+    </div>
+   </div>
+  </section>
+  <!-- Event Section -->
+  <section aria-labelledby="event-details-title" class="bg-[#f7f1e7] py-20 px-6 sm:px-12 md:px-24 select-none" id="event">
+   <h2 class="section-title text-center mb-12" id="event-details-title">
+    Event Details
+   </h2>
+   <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 text-[#4a4a4a] font-semibold">
+    <div aria-label="Wedding Venue Details" class="invitation-card focus:outline-none focus:ring-4 focus:ring-[#bfa06a]" tabindex="0">
+     <img alt="Icon representing wedding venue, elegant building silhouette with floral accents" class="mx-auto" height="120" loading="lazy" src="https://storage.googleapis.com/a1aa/image/6e0f0b29-7164-4baf-b3b6-d38b1f834ce2.jpg" width="120"/>
+     <h3 class="text-2xl mb-2 text-[#bfa06a] font-great-vibes select-none">
+      Venue
+     </h3>
+     <p>
+      The Grand Ballroom
+      <br/>
+      Hotel Mulia Senayan
+      <br/>
+      Jl. Asia Afrika No.8, Jakarta
+     </p>
+    </div>
+    <div aria-label="Wedding Time Details" class="invitation-card focus:outline-none focus:ring-4 focus:ring-[#bfa06a]" tabindex="0">
+     <img alt="Icon representing time, classic clock with elegant design and golden accents" class="mx-auto" height="120" loading="lazy" src="https://storage.googleapis.com/a1aa/image/69321455-ce90-4aae-cd7b-74ab7adec5d4.jpg" width="120"/>
+     <h3 class="text-2xl mb-2 text-[#bfa06a] font-great-vibes select-none">
+      Time
+     </h3>
+     <p>
+      Saturday, 15th June 2024
+      <br/>
+      Ceremony: 10:00 AM
+      <br/>
+      Reception: 12:00 PM - 4:00 PM
+     </p>
+    </div>
+   </div>
+  </section>
+  <!-- Gallery Section -->
+  <section aria-labelledby="gallery-title" class="max-w-7xl mx-auto px-6 sm:px-12 md:px-24 py-20" id="gallery">
+   <h2 class="section-title text-center mb-12 select-none" id="gallery-title">
+    Gallery
+   </h2>
+   <div aria-label="Wedding photo gallery" class="gallery-scroll flex space-x-6 overflow-x-auto scrollbar-hide" tabindex="0">
+    <div aria-label="Mila and Redi engagement photo in a sunset field with warm golden light, romantic and intimate" class="gallery-item w-72 h-96 focus:outline-none" tabindex="0">
+     <img alt="Mila and Redi engagement photo in a sunset field with warm golden light, romantic and intimate" class="w-full h-full object-cover object-center rounded-xl" height="384" loading="lazy" src="https://storage.googleapis.com/a1aa/image/925d7dc0-e541-42de-3f52-7c2b98048bbc.jpg" width="288"/>
+    </div>
+    <div aria-label="Wedding invitation card with floral design and gold accents on cream textured paper" class="gallery-item w-72 h-96 focus:outline-none" tabindex="0">
+     <img alt="Wedding invitation card with floral design and gold accents on cream textured paper" class="w-full h-full object-cover object-center rounded-xl" height="384" loading="lazy" src="https://storage.googleapis.com/a1aa/image/3ea6eed9-bfa3-4523-00d0-567307bac26f.jpg" width="288"/>
+    </div>
+    <div aria-label="Close-up of wedding rings on wooden table with flowers, soft natural light and warm tones" class="gallery-item w-72 h-96 focus:outline-none" tabindex="0">
+     <img alt="Close-up of wedding rings on wooden table with flowers, soft natural light and warm tones" class="w-full h-full object-cover object-center rounded-xl" height="384" loading="lazy" src="https://storage.googleapis.com/a1aa/image/a23428bc-5925-4e17-3336-f1700373c5b2.jpg" width="288"/>
+    </div>
+    <div aria-label="Bride and groom holding hands walking in garden with blooming flowers and soft sunlight" class="gallery-item w-72 h-96 focus:outline-none" tabindex="0">
+     <img alt="Bride and groom holding hands walking in garden with blooming flowers and soft sunlight" class="w-full h-full object-cover object-center rounded-xl" height="384" loading="lazy" src="https://storage.googleapis.com/a1aa/image/f26ebf01-fc0b-4799-daf9-06a91aa984cc.jpg" width="288"/>
+    </div>
+    <div aria-label="Wedding cake with floral decorations and gold details on a rustic wooden table" class="gallery-item w-72 h-96 focus:outline-none" tabindex="0">
+     <img alt="Wedding cake with floral decorations and gold details on a rustic wooden table" class="w-full h-full object-cover object-center rounded-xl" height="384" loading="lazy" src="https://storage.googleapis.com/a1aa/image/a49ae5f1-14ff-4216-439c-270d3841ffc4.jpg" width="288"/>
+    </div>
+    <div aria-label="Guests celebrating at wedding reception with string lights and joyful atmosphere" class="gallery-item w-72 h-96 focus:outline-none" tabindex="0">
+     <img alt="Guests celebrating at wedding reception with string lights and joyful atmosphere" class="w-full h-full object-cover object-center rounded-xl" height="384" loading="lazy" src="https://storage.googleapis.com/a1aa/image/cd0d59a8-53d8-4e3c-4e95-df814606c898.jpg" width="288"/>
+    </div>
+   </div>
+  </section>
+  <!-- RSVP Section -->
+  <section aria-labelledby="rsvp-title" class="bg-[#f7f1e7] py-20 px-6 sm:px-12 md:px-24 select-none" id="rsvp">
+   <h2 class="section-title text-center mb-12" id="rsvp-title">
+    RSVP
+   </h2>
+   <form action="#" aria-label="RSVP form" class="max-w-3xl mx-auto bg-white p-10 rounded-xl shadow-lg font-semibold text-[#4a4a4a]" method="POST">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+     <div>
+      <label class="block mb-2" for="name">
+       Full Name
+      </label>
+      <input class="w-full border border-[#d7cfa8] rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#bfa06a]" id="name" name="name" placeholder="Your full name" required="" type="text"/>
+     </div>
+     <div>
+      <label class="block mb-2" for="email">
+       Email Address
+      </label>
+      <input class="w-full border border-[#d7cfa8] rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#bfa06a]" id="email" name="email" placeholder="you@example.com" required="" type="email"/>
+     </div>
+    </div>
+    <div class="mb-6">
+     <label class="block mb-2" for="attendance">
+      Will you attend?
+     </label>
+     <select class="w-full border border-[#d7cfa8] rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#bfa06a]" id="attendance" name="attendance" required="">
+      <option disabled="" selected="" value="">
+       Select an option
+      </option>
+      <option value="yes">
+       Yes, I will attend
+      </option>
+      <option value="no">
+       No, I cannot attend
+      </option>
+     </select>
+    </div>
+    <div class="mb-6">
+     <label class="block mb-2" for="guests">
+      Number of Guests
+     </label>
+     <input class="w-full border border-[#d7cfa8] rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#bfa06a]" id="guests" max="10" min="0" name="guests" placeholder="0" type="number"/>
+    </div>
+    <div class="mb-6">
+     <label class="block mb-2" for="message">
+      Message (Optional)
+     </label>
+     <textarea class="w-full border border-[#d7cfa8] rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#bfa06a]" id="message" name="message" placeholder="Write a message or wishes..." rows="4"></textarea>
+    </div>
+    <div class="text-center">
+     <button aria-label="Submit RSVP" class="btn-primary w-full md:w-auto px-12 py-3" type="submit">
+      Submit RSVP
+     </button>
+    </div>
+   </form>
+  </section>
+  <!-- Contact Section -->
+  <section aria-labelledby="contact-title" class="max-w-7xl mx-auto px-6 sm:px-12 md:px-24 py-20 text-center text-[#4a4a4a] font-semibold select-none" id="contact">
+   <h2 class="section-title mb-8" id="contact-title">
+    Contact Us
+   </h2>
+   <p class="mb-4 max-w-xl mx-auto">
+    For any questions or assistance, please reach out to us:
+   </p>
+   <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-12 text-lg">
+    <a class="hover:text-[#bfa06a] focus:text-[#bfa06a] focus:outline-none" href="mailto:contact@mila-redi-wedding.com">
+     <i aria-hidden="true" class="fas fa-envelope mr-2">
+     </i>
+     contact@mila-redi-wedding.com
+    </a>
+    <a class="hover:text-[#bfa06a] focus:text-[#bfa06a] focus:outline-none" href="tel:+6281234567890">
+     <i aria-hidden="true" class="fas fa-phone mr-2">
+     </i>
+     +62 812-3456-7890
+    </a>
+   </div>
+   <div class="mt-12 flex justify-center space-x-8 text-2xl">
+    <a aria-label="Instagram" class="social-icon" href="https://www.instagram.com/mila_redi_wedding" rel="noopener" target="_blank">
+     <i aria-hidden="true" class="fab fa-instagram">
+     </i>
+    </a>
+    <a aria-label="Facebook" class="social-icon" href="https://www.facebook.com/mila.redi.wedding" rel="noopener" target="_blank">
+     <i aria-hidden="true" class="fab fa-facebook-f">
+     </i>
+    </a>
+    <a aria-label="Twitter" class="social-icon" href="https://twitter.com/mila_redi" rel="noopener" target="_blank">
+     <i aria-hidden="true" class="fab fa-twitter">
+     </i>
+    </a>
+   </div>
+  </section>
+  <!-- Footer -->
+  <footer class="bg-[#bfa06a] text-white py-6 text-center font-semibold select-none">
+   © 2024 Mila Karmila &amp; Redi Irawan. All rights reserved.
+  </footer>
+  <script>
+   // Mobile menu toggle
+    const menuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
 
-    // Particles effect
-    particlesJS("particles-js",{
-      particles:{number:{value:60},size:{value:3},move:{speed:1}},
-      interactivity:{events:{onhover:{enable:false}}}
-    });
-  </script>
-</body>
-                                                  </html>
+    menuButton.addEventListener("click", () => {
+      const expanded =
+        menuButton.getAttribute("aria-expanded") === "true" || false;
+      menuButton.setAttribute("aria-expanded", !expanded);
+      if (mobileMenu.style.display === "flex") {
+        mobileMenu.style.display = "none";
+        menuButton.querySelector("i").classList.remove("fa-times");
+        menuButton.querySelector("i").c 
