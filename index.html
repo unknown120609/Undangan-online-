@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Undangan Pernikahan — [Nama Mempelai]</title>
+
+  <!-- ===== Fonts (optional) ===== -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- ===== AOS (Animate On Scroll) ===== -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --brand:#7b5f8e;
+      --muted:#6b6b6b;
+      --bg:#faf7f2;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto; background:var(--bg); color:#222; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale}
+    a{color:var(--brand);text-decoration:none}
+
+    /* ---------- COVER (splash) ---------- */
+    #cover{
+      position:fixed; inset:0; z-index:9999;
+      display:flex; align-items:center; justify-content:center; text-align:center;
+      background: center/cover no-repeat url('images/cover.jpg'); /* GANTI FOTO COVER DI SINI */
+      overflow:hidden;
+    }
+    #cover::after{ content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.45)); }
+    #cover .inner{ position:relative; z-index:2; padding:24px; color:#fff; width:100%; max-width:420px }
+    #cover h1{ margin:6px 0; font-size:15px; letter-spacing:2px; font-weight:600; opacity:.95 }
+    #cover .title{ font-size:26px; margin:8px 0 14px; font-weight:700; font-family:'Playfair Display',serif; }
+    #cover .names{ font-size:22px; margin-bottom:10px; font-family:'Playfair Display',serif; }
+    #cover .guest{ font-size:16px; margin-bottom:18px; color:#f3f3f3 }
+    #cover button{ background:transparent; border:2px solid #fff; color:#fff; padding:10px 18px; border-radius:30px; font-weight:600; cursor:pointer; font-size:15px }
+
+    /* Particles container */
+    #particles-js { position:absolute; inset:0; z-index:1; pointer-events:none }
+
+    /* ---------- MAIN PAGE ---------- */
+    #main{ display:none; }
+
+    header.hero{
+      padding:56px 20px; text-align:center; color:#fff;
+      background: center/cover no-repeat url('images/hero.jpg'); /* GANTI FOTO HERO DI SINI */
+      position:relative;
+    }
+    header.hero::after{ content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.45)); }
+    header.hero .wrap{ position:relative; z-index:2; max-width:920px; margin:0 auto; }
+    header.hero h2{ font-size:16px; margin:6px 0 4px; opacity:.95 }
+    header.hero h1{ font-family:'Playfair Display',serif; font-size:34px; margin:6px 0 10px }
+    .countdown{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:18px }
+    .cd{ background:#fff; color:#222; padding:10px 12px; border-radius:10px; min-width:72px; text-align:center; box-shadow:0 6px 18px rgba(0,0,0,.06) }
+    .cd b{ display:block; font-size:18px }
+
+    section{ padding:36px 20px; max-width:920px; margin:0 auto; text-align:center; position:relative }
+    h3.section-title{ color:var(--muted); font-weight:700; margin-bottom:12px; text-transform:uppercase; letter-spacing:.12em; font-size:13px }
+
+    .grid{ display:grid; gap:14px }
+    @media(min-width:900px){ .grid-2{ grid-template-columns:1fr 1fr } }
+
+    .card{ background:#fff; padding:18px; border-radius:14px; box-shadow:0 8px 30px rgba(0,0,0,.04); text-align:left }
+    .profile{ display:flex; gap:12px; align-items:center }
+    .avatar{ width:88px; height:88px; border-radius:12px; object-fit:cover; flex-shrink:0 }
+    .gallery{ display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:10px }
+
+    .btn{ background:var(--brand); color:#fff; border:none; padding:10px 14px; border-radius:10px; cursor:pointer; font-weight:600 }
+    .btn.ghost{ background:transparent; color:var(--brand); border:1px solid rgba(0,0,0,.06) }
+
+    .sticky-music{ position:fixed; right:14px; bottom:14px; z-index:1200; display:none }
+    .toast{ position:fixed; top:16px; left:50%; transform:translateX(-50%); background:#111; color:#fff; padding:8px 12px; border-radius:8px; opacity:0; transition:.25s }
+
+    footer{ padding:20px 12px; text-align:center; color:var(--muted); font-size:14px }
+
+    /* Lightbox modal */
+    .modal{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,.7); z-index:2000 }
+    .modal img{ max-width:95%; max-height:85%; border-radius:8px; }
+
+    /* RSVP form (simple) */
+    .rsvp-form input,.rsvp-form textarea, .rsvp-form select{ width:100%; padding:10px;border-radius:8px;border:1px solid #e6e6e6;margin-top:8px; font-size:14px }
+    .rsvp-row{ display:flex; gap:8px; }
+    @media(max-width:600px){ .rsvp-row{flex-direction:column} }
+
+    /* stickers */
+    .stickers{ display:flex; gap:8px; justify-content:center; flex-wrap:wrap }
+    .sticker{ width:78px; height:78px; border-radius:10px; overflow:hidden; cursor:pointer; border:2px solid transparent }
+    .sticker.selected{ border-color:var(--brand) }
+
+    /* small screens tweak */
+    @media (max-width:480px){
+      header.hero h1{ font-size:26px }
+      #cover .title{ font-size:20px }
+      #cover .names{ font-size:18px }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- COVER -->
+  <div id="cover" aria-hidden="false">
+    <div id="particles-js"></div>
+    <div class="inner" data-aos="fade-up">
+      <h1>YOU'RE INVITED</h1>
+      <div class="title">The Wedding Of</div>
+      <div class="names">[NAMA_MEREKA]</div>
+      <div class="guest" id="guestName">Kepada Yth. Tamu Undangan</div>
+      <button onclick="openInvitation()">📖 Buka Undangan</button>
+    </div>
+  </div>
+
+  <!-- AUDIO (contoh royalty-free; ganti jika perlu) -->
+  <audio id="bgMusic" src="https://cdn.pixabay.com/download/audio/2023/03/06/audio_c83d292743.mp3?filename=wedding-piano-144998.mp3" loop preload="auto"></audio>
+  <div class="sticky-music" id="musicControl">
+    <button class="btn" id="musicBtn" onclick="toggleMusic()">🎵 Play Musik</button>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div id="main" aria-hidden="true">
+    <header class="hero" role="banner">
+      <div class="wrap" data-aos="fade-up">
+        <h2>Assalamualaikum Warahmatullahi Wabarakatuh</h2>
+        <h1>[NAMA_MEREKA]</h1>
+
+        <div class="countdown" id="countdown">
+          <div class="cd"><b id="days">00</b><small>Hari</small></div>
+          <div class="cd"><b id="hours">00</b><small>Jam</small></div>
+          <div class="cd"><b id="minutes">00</b><small>Menit</small></div>
+          <div class="cd"><b id="seconds">00</b><small>Detik</small></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- SALAM & UNDANGAN -->
+    <section data-aos="fade-up">
+      <h3 class="section-title">Pembukaan</h3>
+      <div class="card">
+        <p>Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara(i) untuk hadir dan memberikan doa restu pada acara pernikahan kami.</p>
+      </div>
+    </section>
+
+    <!-- MEMPELAI -->
+    <section data-aos="fade-up">
+      <h3 class="section-title">Mempelai</h3>
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="profile">
+            <img class="avatar" src="images/bride.jpg" alt="Mempelai Wanita"> <!-- GANTI FOTO -->
+            <div>
+              <strong id="brideName">[Nama Pengantin Wanita]</strong>
+              <div id="brideParents" style="color:var(--muted)">Putri dari Bapak ... & Ibu ...</div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="profile">
+            <img class="avatar" src="images/groom.jpg" alt="Mempelai Pria"> <!-- GANTI FOTO -->
+            <div>
+              <strong id="groomName">[Nama Pengantin Pria]</strong>
+              <div id="groomParents" style="color:var(--muted)">Putra dari Bapak ... & Ibu ...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DETAIL ACARA -->
+    <section data-aos="fade-up">
+      <h3 class="section-title">Detail Acara</h3>
+      <div class="grid grid-2">
+        <div class="card">
+          <strong>Akad Nikah</strong>
+          <p id="akadDate">[DATE_AKAD] • [WAKTU]</p>
+          <p id="akadPlace">[ALAMAT_AKAD]</p>
+        </div>
+        <div class="card">
+          <strong>Resepsi</strong>
+          <p id="resepsiDate">[DATE_RESEPSI] • [WAKTU]</p>
+          <p id="resepsiPlace">[ALAMAT_RESEPSI]</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- OUR STORY -->
+    <section data-aos="fade-up">
+      <h3 class="section-title">Our Story</h3>
+      <div class="card">
+        <!-- contoh timeline sederhana; ganti sesuai kebutuhan -->
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div><strong>2018</strong> — Pertemuan pertama dan mulai berkomunikasi.</div>
+          <div><strong>2023</strong> — Menjalin hubungan yang serius.</div>
+          <div><strong>20 Agu 2025</strong> — Lamaran keluarga.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERI -->
+    <section data-aos="fade-up">
+      <h3 class="section-title">Galeri</h3>
+      <div class="gallery">
+        <img src="images/photo1.jpg" alt="foto1" onclick="openLightbox(this.src)"> <!-- GANTI FOTO -->
+        <img src="images/photo2.jpg" alt="foto2" onclick="openLightbox(this.src)">
+        <img src="images/photo3.jpg" alt="foto3" onclick="openLightbox(this.src)">
+        <img src="images/photo4.jpg" alt="foto4" onclick="openLightbox(this.src)">
+      </div>
+    </section>
+
+    <!-- HADIAH & REKENING -->
+    <section data-aos="fade-up">
+      <h3 class="section-title">Hadiah</h3>
+      <div class="card">
+        <p>Doa dan kehadiran Bapak/Ibu/Saudara(i) adalah hal utama. Jika berkenan mengirim tanda kasih, silakan melalui:</p>
+        <p><strong id="bankNo">[BANK] • <span id="rekNo">123456789</span> a.n. <span id="rekName">[Nama]</span></strong></p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn" onclick="copyRek()">Salin No. Rek</button>
+          <button class="btn ghost" onclick="openMaps()">Buka Lokasi</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section data-aos="fade-up">
+      <h3 class="section-title">Konfirmasi Kehadiran</h3>
+      <div class="card rsvp-form">
+        <label>Nama</label>
+        <input id="rsvpName" placeholder="Nama lengkap" />
+        <label>Keputusan</label>
+        <select id="rsvpStatus">
+          <option value="Hadir">Hadir</option>
+          <option value="Ragu">Ragu</option>
+          <option value="Tidak Bisa">Tidak Bisa</option>
+        </select>
+        <label>Pesan untuk pengantin (opsional)</label>
+        <textarea id="rsvpMsg" rows="3" placeholder="Contoh: Selamat ya ..."></textarea>
+
+        <div style="margin-top:10px">
+          <div style="margin-bottom:8px">Pilih stiker</div>
+          <div class="stickers" id="stickers">
+            <div class="sticker" data-id="st1" onclick="selectSticker(this)"><img src="images/st1.png" style="width:100%;height:100%;object-fit:cover"></div>
+            <div class="sticker" data-id="st2" onclick="selectSticker(this)"><img src="images/st2.png" style="width:100%;height:100%;object-fit:cover"></div>
+            <div class="sticker" data-id="st3" onclick="selectSticker(this)"><img src="images/st3.png" style="width:100%;height:100%;object-fit:cover"></div>
+            <div class="sticker" data-id="st4" onclick="selectSticker(this)"><img src="images/st4.png" style="width:100%;height:100%;object-fit:cover"></div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn" onclick="saveRSVP()">Simpan</button>
+          <button class="btn ghost" onclick="sendWA()">Kirim via WhatsApp</button>
+        </div>
+
+        <div id="rsvpSaved" style="margin-top:8px;color:green;display:none">Konfirmasi tersimpan di perangkat Anda.</div>
+      </div>
+    </section>
+
+    <footer data-aos="fade-up">
+      <p>Terima kasih atas doa & kehadiran Anda.</p>
+      <small>© <span id="yearNow"></span> — [NAMA_MEREKA]</small>
+    </footer>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="modal" onclick="closeLightbox()"><img id="lightboxImg" src="" alt="preview"></div>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast">Tersalin!</div>
+
+  <!-- ===== External libs ===== -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    /********** CONFIG - GANTI SESUAI KEBUTUHAN **********/
+    const CONFIG = {
+      COVER_IMAGE: 'images/cover.jpg',    // gambar cover (ganti manual)
+      HERO_IMAGE: 'images/hero.jpg',      // gambar hero (ganti manual)
+      NAMES: '[NAMA_MEREKA]',
+      TARGET_DATE_ISO: '2025-12-20T09:00:00+07:00', // format ISO (ganti tanggal/jam)
+      BANK_NAME: 'BNI',
+      BANK_NO: '123456789',
+      BANK_OWNER: '[Nama Penerima]',
+      WA_NUMBER: '6281234567890', // nomor panitia / penerima RSVP (Format tanpa + / 0 -> 62...)
+    };
+    /*****************************************************/
+
+    // apply images & texts (so you edit only CONFIG)
+    document.addEventListener('DOMContentLoaded',()=>{
+      // cover & hero images
+      document.getElementById('cover').style.backgroundImage = `url('${CONFIG.COVER_IMAGE}')`;
+      document.querySelector('header.hero').style.backgroundImage = `url('${CONFIG.HERO_IMAGE}')`;
+      // names
+      document.querySelector('#cover .names').textContent = CONFIG.NAMES;
+      document.querySelector('header.hero h1').textContent = CONFIG.NAMES;
+      // bank
+      document.getElementById('bankNo').textContent = CONFIG.BANK_NAME + ' • ';
+      document.getElementById('rekNo').textContent = CONFIG.BANK_NO;
+      document.getElementById('rekName').textContent = CONFIG.BANK_OWNER;
+      // year
+      document.getElementById('yearNow').textContent = new Date().getFullYear();
+      // guest from query
+      const params = new URLSearchParams(window.location.search);
+      const guest = params.get('to');
+      if(guest) document.getElementById('guestName').textContent = 'Kepada Yth. ' + guest;
+    });
+
+    // AOS init
+    AOS.init({ duration:800, once:true });
+
+    // particles (light falling particles like glitter/snow)
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 50, density: { enable: true, value_area: 800 } },
+        color: { value: '#ffffff' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.9, random: true },
+        size: { value: 3, random: true },
+        line_linked: { enable: false },
+        move: { enable: true, speed: 1, direction: 'bottom', out_mode: 'out' }
+      },
+      interactivity: { detect_on: 'canvas', events: { onhover: { enable: false } } },
+      retina_detect: true
+    });
+
+    // Cover open
+    function openInvitation(){
+      document.getElementById('cover').style.display = 'none';
+      document.getElementById('main').style.display = 'block';
+      document.getElementById('musicControl').style.display = 'block';
+      // attempt autoplay (some browsers block until user gesture)
+      const a = document.getElementById('bgMusic');
+      a.play().catch(()=>{ /* blocked */ });
+      // set countdown target
+      initCountdown(CONFIG.TARGET_DATE_ISO);
+    }
+
+    // Music toggle
+    function toggleMusic(){
+      const a = document.getElementById('bgMusic');
+      const b = document.getElementById('musicBtn');
+      if(a.paused){ a.play(); b.textContent='🎵 Pause Musik'; }
+      else { a.pause(); b.textContent='🎵 Play Musik'; }
+    }
+
+    // Countdown function
+    let countdownInterval = null;
+    function initCountdown(iso){
+      if(countdownInterval) clearInterval(countdownInterval);
+      const target = new Date(iso).getTime();
+      function tick(){
+        const now = Date.now();
+        const diff = Math.max(0, target - now);
+        const d = Math.floor(diff / (1000*60*60*24));
+        const h = Math.floor((diff % (1000*60*60*24))/(1000*60*60));
+        const m = Math.floor((diff % (1000*60*60))/(1000*60));
+        const s = Math.floor((diff % (1000*60))/1000);
+        document.getElementById('days').textContent = String(d).padStart(2,'0');
+        document.getElementById('hours').textContent = String(h).padStart(2,'0');
+        document.getElementById('minutes').textContent = String(m).padStart(2,'0');
+        document.getElementById('seconds').textContent = String(s).padStart(2,'0');
+      }
+      tick();
+      countdownInterval = setInterval(tick,1000);
+    }
+
+    // Lightbox
+    function openLightbox(src){
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightbox').style.display = 'flex';
+    }
+    function closeLightbox(){ document.getElementById('lightbox').style.display = 'none'; }
+
+    // Open maps (uses address placeholder; replace with real link or use geocode)
+    function openMaps(){
+      // Example: open google maps search with address (replace parameter if needed)
+      const address = encodeURIComponent(document.getElementById('akadPlace').textContent || '');
+      window.open('https://www.google.com/maps/search/?api=1&query=' + address, '_blank');
+    }
+
+    // Copy rekening
+    function copyRek(){
+      const txt = document.getElementById('rekNo').textContent.trim();
+      navigator.clipboard.writeText(txt).then(()=>{
+        showToast('Nomor rekening tersalin!');
+      }).catch(()=>{ showToast('Gagal menyalin (browser tidak mengizinkan)'); });
+    }
+
+    // Toast helper
+    function showToast(msg){
+      const t = document.getElementById('toast');
+      t.textContent = msg; t.style.opacity = '1'; t.classList.add('show');
+      setTimeout(()=>{ t.style.opacity='0'; t.classList.remove('show'); },1800);
+    }
+
+    // Stickers management
+    let selectedSticker = null;
+    function selectSticker(el){
+      document.querySelectorAll('.sticker').forEach(s=>s.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedSticker = el.getAttribute('data-id');
+    }
+
+    // RSVP save to localStorage
+    function saveRSVP(){
+      const name = document.getElementById('rsvpName').value.trim();
+      const status = document.getElementById('rsvpStatus').value;
+      const msg = document.getElementById('rsvpMsg').value.trim();
+      if(!name){ alert('Masukkan nama terlebih dahulu.'); return; }
+      const entry = { name, status, msg, sticker: selectedSticker || null, time: new Date().toISOString() };
+      let arr = JSON.parse(localStorage.getItem('rsvps') || '[]');
+      arr.push(entry);
+      localStorage.setItem('rsvps', JSON.stringify(arr));
+      document.getElementById('rsvpSaved').style.display = 'block';
+      setTimeout(()=>{ document.getElementById('rsvpSaved').style.display='none' }, 2200);
+    }
+
+    // Send RSVP via WhatsApp (pre-fill)
+    function sendWA(){
+      const name = document.getElementById('rsvpName').value.trim();
+      const status = document.getElementById('rsvpStatus').value;
+      const msg = document.getElementById('rsvpMsg').value.trim();
+      if(!name){ alert('Masukkan nama terlebih dahulu.'); return; }
+      let text = `Halo, saya ${name}%0AStatus: ${status}%0A`;
+      if(msg) text += `Pesan: ${msg}%0A`;
+      if(selectedSticker) text += `Sticker: ${selectedSticker}%0A`;
+      text += `%0ASaya mengkonfirmasi kehadiran untuk pernikahan ${CONFIG.NAMES}.`;
+      const waUrl = `https://wa.me/${CONFIG.WA_NUMBER}?text=` + encodeURIComponent(text);
+      window.open(waUrl, '_blank');
+    }
+
+    // Accessibility: allow ENTER to open cover when focused
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' && document.getElementById('cover').style.display !== 'none'){
+        openInvitation();
+      }
+    });
+
+    // If user loads with ?open=1, auto open cover
+    if(location.search.indexOf('open=1') !== -1){
+      wind
