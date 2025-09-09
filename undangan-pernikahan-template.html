@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Undangan Pernikahan - Template</title>
+  <meta name="description" content="Undangan Pernikahan Online - Template Satu File" />
+  <style>
+    :root{
+      --bg:#faf7f2;
+      --fg:#2b2b2b;
+      --muted:#6b6b6b;
+      --brand:#7b5f8e;
+      --brand-2:#c7b3d4;
+      --card:#ffffff;
+      --accent:#e8dfef;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--fg)}
+    a{color:var(--brand);text-decoration:none}
+    .container{max-width:980px;margin:0 auto;padding:24px}
+    header.hero{
+      min-height:80vh;
+      display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(180deg,rgba(123,95,142,.12),transparent 60%);
+      text-align:center;
+      position:relative;overflow:hidden;
+    }
+    .chip{display:inline-block;padding:6px 12px;border-radius:999px;background:var(--accent);color:var(--brand);font-weight:600;margin-bottom:8px;font-size:14px}
+    h1{font-size:42px;line-height:1.15;margin:6px 0 10px}
+    h2{font-size:28px;margin:0 0 8px}
+    p.lead{font-size:18px;color:var(--muted);margin:0 0 16px}
+    .names{font-size:48px;letter-spacing:.5px}
+    .amp{color:var(--brand);padding:0 8px}
+    .card{background:var(--card);border:1px solid #ece9f1;border-radius:20px;padding:20px;box-shadow:0 6px 24px rgba(0,0,0,.04)}
+    .grid{display:grid;gap:18px}
+    @media(min-width:800px){ .grid-2{grid-template-columns:1fr 1fr} }
+    .countdown{display:flex;gap:12px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+    .dd{min-width:86px;padding:12px;border-radius:16px;background:#fff;border:1px solid #eee;text-align:center}
+    .dd b{display:block;font-size:26px}
+    .dd span{font-size:12px;color:var(--muted)}
+    section{padding:32px 0}
+    .section-title{font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:10px}
+    .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    @media(min-width:800px){ .gallery{grid-template-columns:repeat(4,1fr)} }
+    .gallery img{width:100%;height:170px;object-fit:cover;border-radius:16px;border:1px solid #eee;background:#ddd}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:12px;border:1px solid #e7e3ec;background:#fff;font-weight:600}
+    .btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+    .btn-row{display:flex;gap:12px;flex-wrap:wrap}
+    footer{padding:50px 24px;text-align:center;color:var(--muted)}
+    .timeline{border-left:3px solid var(--accent);padding-left:16px}
+    .timeline .item{margin:10px 0}
+    .bank{display:flex;gap:14px;align-items:center}
+    .bank .logo{width:40px;height:40px;border-radius:10px;background:var(--accent);display:grid;place-items:center;font-weight:700;color:var(--brand)}
+    .map-embed{width:100%;height:320px;border:0;border-radius:16px}
+    .sticky-music{position:fixed;bottom:18px;right:18px}
+    .toast{position:fixed;top:16px;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:10px 16px;border-radius:10px;opacity:0;transition:.4s}
+    .toast.show{opacity:1}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <div class="chip">Save The Date</div>
+      <div class="names"><span id="namaPria">Nama Mempelai Pria</span><span class="amp">&amp;</span><span id="namaWanita">Nama Mempelai Wanita</span></div>
+      <p class="lead" id="tanggalPernikahanLabel">Sabtu, 20 Desember 2025</p>
+      <div class="countdown" id="countdown">
+        <div class="dd"><b id="cd-days">00</b><span>Hari</span></div>
+        <div class="dd"><b id="cd-hours">00</b><span>Jam</span></div>
+        <div class="dd"><b id="cd-min">00</b><span>Menit</span></div>
+        <div class="dd"><b id="cd-sec">00</b><span>Detik</span></div>
+      </div>
+      <div style="margin-top:18px" class="btn-row">
+        <a class="btn primary" id="btnBukaUndangan" href="#pembuka">Buka Undangan</a>
+        <a class="btn" id="btnCalendar" target="_blank">Tambah ke Kalender</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="pembuka">
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="section-title">Assalamualaikum</div>
+          <h2>Dengan memohon rahmat dan ridho Allah SWT</h2>
+          <p class="lead">Kami bermaksud menyelenggarakan pernikahan putra-putri kami dan dengan segala hormat mengundang Bapak/Ibu/Saudara(i) untuk hadir memberikan doa restu.</p>
+          <div class="btn-row">
+            <a class="btn" id="btnWhatsApp" target="_blank">Konfirmasi via WhatsApp</a>
+            <a class="btn" id="btnMap" target="_blank">Lihat Lokasi</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="section-title">Mempelai</div>
+          <div class="grid">
+            <div>
+              <h3 id="mempelaiPria">Nama Mempelai Pria</h3>
+              <p class="lead" id="ortuPria">Putra dari Bapak ... &amp; Ibu ...</p>
+            </div>
+            <div>
+              <h3 id="mempelaiWanita">Nama Mempelai Wanita</h3>
+              <p class="lead" id="ortuWanita">Putri dari Bapak ... &amp; Ibu ...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="acara">
+      <div class="section-title">Detail Acara</div>
+      <div class="grid grid-2">
+        <div class="card">
+          <h2>Akad Nikah</h2>
+          <p class="lead" id="akadWaktu">Sabtu, 20 Desember 2025 • 09.00 WIB</p>
+          <p id="akadTempat">Di kediaman mempelai wanita — Jl. Contoh Alamat No. 123, Kota</p>
+        </div>
+        <div class="card">
+          <h2>Resepsi</h2>
+          <p class="lead" id="resepsiWaktu">Sabtu, 20 Desember 2025 • 11.00–14.00 WIB</p>
+          <p id="resepsiTempat">Gedung Serbaguna Harmoni — Jl. Contoh Alamat No. 456, Kota</p>
+        </div>
+      </div>
+      <div style="margin-top:16px" class="card">
+        <iframe class="map-embed" id="mapEmbed" loading="lazy" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section id="story">
+      <div class="section-title">Our Story</div>
+      <div class="timeline card">
+        <div class="item"><b>2018</b> — Pertama kali bertemu di kampus.</div>
+        <div class="item"><b>2023</b> — Mulai serius menjalin hubungan.</div>
+        <div class="item"><b>20 Agustus 2025</b> — Acara lamaran keluarga.</div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="section-title">Galeri</div>
+      <div class="gallery">
+        <img src="" alt="Foto 1 (ganti URL)" />
+        <img src="" alt="Foto 2 (ganti URL)" />
+        <img src="" alt="Foto 3 (ganti URL)" />
+        <img src="" alt="Foto 4 (ganti URL)" />
+      </div>
+    </section>
+
+    <section id="gift">
+      <div class="section-title">Hadiah</div>
+      <div class="card">
+        <p class="lead">Doa restu Bapak/Ibu/Saudara(i) adalah hadiah terbaik. Namun bila berkenan mengirim tanda kasih, dapat melalui:</p>
+        <div class="grid">
+          <div class="bank">
+            <div class="logo">BCA</div>
+            <div>
+              <div><b id="rekBank">1234567890</b> a.n. <span id="namaRek">Nama Penerima</span></div>
+              <button class="btn" onclick="copyText('rekBank')">Salin No. Rek</button>
+            </div>
+          </div>
+          <div>
+            <p>Alamat pengiriman kado:</p>
+            <p id="alamatKado">Jl. Contoh Alamat No. 789, Kota, 12345</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rsvp">
+      <div class="section-title">RSVP</div>
+      <div class="card">
+        <p class="lead">Mohon konfirmasi kehadiran Anda.</p>
+        <div class="btn-row">
+          <a class="btn primary" id="rsvpHadir" target="_blank">Hadir</a>
+          <a class="btn" id="rsvpMungkin" target="_blank">Mungkin</a>
+          <a class="btn" id="rsvpTidak" target="_blank">Tidak Bisa</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Terima kasih atas doa dan kehadiran Anda.</p>
+      <p>© <span id="tahunNow"></span> — <span id="footerNama">Nama Mempelai Pria &amp; Nama Mempelai Wanita</span></p>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast">Tersalin!</div>
+
+  <script>
+    // ======== KONFIGURASI (EDIT DI SINI) ===========
+    const config = {
+      mempelaiPria: "Nama Mempelai Pria",
+      mempelaiWanita: "Nama Mempelai Wanita",
+      ortuPria: "Putra dari Bapak ... & Ibu ...",
+      ortuWanita: "Putri dari Bapak ... & Ibu ...",
+      tanggalLabel: "Sabtu, 20 Desember 2025",
+      // Format: YYYY-MM-DDTHH:MM:SS+07:00 (WIB)
+      tanggalISO: "2025-12-20T09:00:00+07:00",
+      lokasiMapQuery: "Gedung%20Serbaguna%20Harmoni%2C%20Jakarta",
+      mapEmbedSrc: "https://www.google.com/maps?q=Gedung%20Serbaguna%20Harmoni%2C%20Jakarta&output=embed",
+      akadWaktu: "Sabtu, 20 Desember 2025 • 09.00 WIB",
+      akadTempat: "Di kediaman mempelai wanita — Jl. Contoh Alamat No. 123, Kota",
+      resepsiWaktu: "Sabtu, 20 Desember 2025 • 11.00–14.00 WIB",
+      resepsiTempat: "Gedung Serbaguna Harmoni — Jl. Contoh Alamat No. 456, Kota",
+      whatsappNumber: "6281234567890", // ganti ke nomor WA panitia
+      rsvpMessage: "Halo, saya ingin konfirmasi kehadiran untuk acara pernikahan.",
+      rekening: { bank: "BCA", nomor: "1234567890", nama: "Nama Penerima" },
+      alamatKado: "Jl. Contoh Alamat No. 789, Kota, 12345"
+    };
+    // ================================================
+
+    const $ = (id)=>document.getElementById(id);
+    const qs = (sel)=>document.querySelector(sel);
+
+    function init() {
+      $("namaPria").textContent = config.mempelaiPria;
+      $("namaWanita").textContent = config.mempelaiWanita;
+      $("mempelaiPria").textContent = config.mempelaiPria;
+      $("mempelaiWanita").textContent = config.mempelaiWanita;
+      $("ortuPria").textContent = config.ortuPria;
+      $("ortuWanita").textContent = config.ortuWanita;
+      $("tanggalPernikahanLabel").textContent = config.tanggalLabel;
+      $("akadWaktu").textContent = config.akadWaktu;
+      $("akadTempat").textContent = config.akadTempat;
+      $("resepsiWaktu").textContent = config.resepsiWaktu;
+      $("resepsiTempat").textContent = config.resepsiTempat;
+      $("mapEmbed").src = config.mapEmbedSrc;
+      $("rekBank").textContent = config.rekening.nomor;
+      $("namaRek").textContent = config.rekening.nama;
+      $("alamatKado").textContent = config.alamatKado;
+      $("footerNama").textContent = config.mempelaiPria + " & " + config.mempelaiWanita;
+      $("tahunNow").textContent = new Date().getFullYear();
+
+      // WA buttons
+      const baseWA = "https://wa.me/" + config.whatsappNumber + "?text=" + encodeURIComponent(config.rsvpMessage + " ");
+      $("btnWhatsApp").href = baseWA;
+      $("rsvpHadir").href = baseWA + encodeURIComponent("[Status: Hadir]");
+      $("rsvpMungkin").href = baseWA + encodeURIComponent("[Status: Mungkin]");
+      $("rsvpTidak").href = baseWA + encodeURIComponent("[Status: Tidak Bisa]");
+
+      // Calendar link (Google Calendar)
+      const start = new Date(config.tanggalISO);
+      const end = new Date(start.getTime() + 2*60*60*1000); // +2 jam
+      function fmtCal(dt){
+        const pad = n=>String(n).padStart(2,'0');
+        return dt.getUTCFullYear()+
+          pad(dt.getUTCMonth()+1)+
+          pad(dt.getUTCDate())+"T"+
+          pad(dt.getUTCHours())+
+          pad(dt.getUTCMinutes())+
+          "00Z";
+      }
+      const gcal = "https://www.google.com/calendar/render?action=TEMPLATE" +
+        "&text=" + encodeURIComponent("Pernikahan " + config.mempelaiPria + " & " + config.mempelaiWanita) +
+        "&dates=" + fmtCal(start) + "/" + fmtCal(end) +
+        "&location=" + config.lokasiMapQuery +
+        "&details=" + encodeURIComponent("Mohon doa restu.");
+      $("btnCalendar").href = gcal;
+
+      // Map button (open in Maps)
+      $("btnMap").href = "https://www.google.com/maps/search/?api=1&query=" + config.lokasiMapQuery;
+
+      // Countdown
+      const target = new Date(config.tanggalISO).getTime();
+      setInterval(()=>{
+        const now = new Date().getTime();
+        const diff = Math.max(0, target - now);
+        const d = Math.floor(diff/(1000*60*60*24));
+        const h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+        const m = Math.floor((diff%(1000*60*60))/(1000*60));
+        const s = Math.floor((diff%(1000*60))/1000);
+        $("cd-days").textContent = String(d).padStart(2,'0');
+        $("cd-hours").textContent = String(h).padStart(2,'0');
+        $("cd-min").textContent = String(m).padStart(2,'0');
+        $("cd-sec").textContent = String(s).padStart(2,'0');
+      }, 1000);
+    }
+
+    function copyText(id){
+      const text = $(id).textContent;
+      navigator.clipboard.writeText(text).then(()=>{
+        const t = $("toast"); t.classList.add("show");
+        setTimeout(()=>t.classList.remove("show"), 1500);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", init);
+  </script>
+</body>
+</html>
