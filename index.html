@@ -5,177 +5,77 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Undangan — [agus]</title>
 
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<!-- AOS for scroll animations -->
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
 <style>
-  :root{
-    --accent:#d7b8ff;
-    --muted:#cfcfcf;
-    --panel: rgba(0,0,0,0.45);
-    --glass: rgba(255,255,255,0.06);
-  }
-  html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;background:#0b0b0b;color:#fff;-webkit-font-smoothing:antialiased}
-  a{color:inherit;text-decoration:none}
-
-  /* Cover */
-  .cover {
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    position:relative;
-    overflow:hidden;
-    background: center/cover no-repeat url('flower.jpg');
-  }
-  .cover::after{ content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.6)); }
-  .cover-inner{ position:relative; z-index:2; padding:28px; max-width:720px; }
-  .brand-orn{ width:86px; height:86px; margin:0 auto 12px; display:block; background:rgba(255,255,255,0.06); border-radius:16px; display:flex;align-items:center;justify-content:center}
-  .save-title{ font-family:'Great Vibes',cursive; font-size:42px; margin:6px 0; color:#fff }
-  .sub{ color:var(--muted); margin:8px 0 18px; font-size:16px }
-  .btn-ghost{ background:var(--accent); color:#1b0b2b; padding:10px 18px; border-radius:8px; border:none; font-weight:600; cursor:pointer }
-
-  /* Panel */
-  .panel { background:var(--panel); border-radius:18px; padding:18px; margin:18px auto; max-width:920px; }
-
-  /* Couple */
-  .couple-frame{ max-width:420px; margin:0 auto 18px; }
-  .frame-box{ background:rgba(255,255,255,0.03); border:6px solid rgba(255,255,255,0.06); padding:18px; border-radius:12px }
-  .couple-photo{ width:180px; height:180px; border-radius:12px; object-fit:cover; display:block; margin:6px auto 12px; border:6px solid rgba(255,255,255,0.12); }
-  .couple-names{ font-family:'Great Vibes',cursive; font-size:34px; margin-top:6px; color:#fff }
-  .parents{ color:var(--muted); font-size:13px; margin-top:8px; }
-
-  /* Countdown */
-  .count-wrap{ display:flex; justify-content:center; gap:12px; margin-top:16px; flex-wrap:wrap }
-  .count-item{ background:rgba(255,255,255,0.03); padding:12px 14px; border-radius:10px; min-width:72px; text-align:center }
-  .count-item b{ display:block; font-size:20px; font-weight:700; }
-
-  /* Sections */
-  section{ padding:48px 18px; }
-  .section-title{ font-family:'Great Vibes',cursive; font-size:28px; margin-bottom:8px; color:#fff }
-  .muted{ color:var(--muted); font-size:15px }
-
-  /* Map */
-  .map-embed{ width:100%; height:260px; border-radius:12px; border:0 }
-
-  /* Wishes */
-  .wishes{ max-width:760px; margin:12px auto; text-align:center; color:#f0f0f0; font-size:16px }
-
-  /* Gallery */
-  .gallery-hero { max-width:460px; margin:24px auto; position:relative; }
-  .hero-frame { border:14px solid rgba(255,255,255,0.06); padding:12px; border-radius:14px; background:rgba(0,0,0,0.25) }
-  .hero-img{ width:100%; height:520px; object-fit:cover; border-radius:8px }
-  .arrow { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.45); border:0; width:48px; height:48px; border-radius:24px; color:#fff; font-size:22px; cursor:pointer }
-  .arrow.left{ left:6px } .arrow.right{ right:6px }
-  .gallery-grid { display:grid; gap:12px; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); margin-top:18px; padding:6px }
-  .gallery-grid img { width:100%; height:180px; object-fit:cover; border-radius:12px; cursor:pointer }
-
-  /* Bottom Nav */
-  .bottom-nav{ position:fixed; left:12px; right:12px; bottom:12px; height:64px; background:rgba(255,255,255,0.05); border-radius:26px; display:flex; align-items:center; justify-content:space-around; z-index:1200 }
-  .nav-item{ flex:1; text-align:center; color:var(--muted); font-size:13px; padding:8px; cursor:pointer }
-  .nav-item.active{ color:var(--accent); font-weight:600 }
+  :root{ --accent:#d7b8ff; --muted:#cfcfcf; --panel:rgba(0,0,0,0.45); }
+  body{margin:0;font-family:'Poppins',sans-serif;background:#0b0b0b;color:#fff}
+  section{padding:40px 18px}
+  .panel{background:var(--panel);border-radius:18px;padding:20px;margin:18px auto;max-width:800px}
+  .section-title{font-family:'Great Vibes',cursive;font-size:28px;margin-bottom:8px}
+  .muted{color:var(--muted)}
+  .btn{background:var(--accent);color:#1b0b2b;padding:10px 18px;border-radius:8px;border:none;cursor:pointer;font-weight:600}
+  .btn-rsvp{margin:6px;background:rgba(255,255,255,0.1);color:#fff;padding:10px 18px;border-radius:8px;border:none;cursor:pointer}
+  .btn-rsvp:hover{background:var(--accent);color:#000}
 </style>
 </head>
 <body>
 
-  <!-- Cover -->
-  <main class="cover" id="cover">
-    <div class="cover-inner">
-      <div class="brand-orn"><img src="ornament.png" alt="" style="width:56px;height:56px"></div>
-      <div class="save-title">Save The Date</div>
-      <div class="sub">Waktu Dan Tempat</div>
-      <button class="btn-ghost">📅 Atur Pengingat</button>
-    </div>
-  </main>
-
-  <!-- Sambutan -->
-  <section id="sambutan">
-    <div class="panel">
-      <p class="muted">Dengan segala kerendahan hati, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri pernikahan kami</p>
-      <div class="couple-frame">
-        <div class="frame-box">
-          <img class="couple-photo" src="anna.png" alt="bride">
-          <div class="parents">Keluarga bapak Abdul</div>
-        </div>
-        <div style="height:12px"></div>
-        <div class="frame-box">
-          <img class="couple-photo" src="hamzah.png" alt="groom">
-          <div class="parents">Keluarga bapak Hasan</div>
-        </div>
-        <div class="couple-names">Anissa &amp; Hamzah</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Countdown -->
-  <section id="count">
-    <div class="panel">
-      <div class="count-wrap">
-        <div class="count-item"><b id="days">00</b><small>Hari</small></div>
-        <div class="count-item"><b id="hours">00</b><small>Jam</small></div>
-        <div class="count-item"><b id="minutes">00</b><small>Menit</small></div>
-        <div class="count-item"><b id="seconds">00</b><small>Detik</small></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Acara -->
-  <section id="acara">
-    <div class="panel">
-      <h3 class="section-title">Resepsi</h3>
-      <p class="muted">12 Desember 2024 • Pukul 10:00 WIB</p>
-      <iframe class="map-embed" src="https://www.google.com/maps/embed?..."></iframe>
-    </div>
-  </section>
-
-  <!-- Kisah -->
-  <section id="kisah">
-    <div class="panel">
-      <h3 class="section-title">Kisah Kami</h3>
-      <p class="muted">Tidak ada yang kebetulan di dunia ini. Semua sudah tersusun dengan sangat rapi oleh Sang Maha Kuasa...</p>
-      <h4>• Lamaran</h4>
-      <p class="muted">Pada 20 Agustus 2025 kami melangsungkan lamaran...</p>
-      <h4>• Pernikahan</h4>
-      <p class="muted">Kami memutuskan untuk melangsungkan akad nikah pada 19 September 2025...</p>
-    </div>
-  </section>
-
   <!-- Harapan -->
   <section id="harapan">
     <div class="panel">
-      <div class="wishes">
-        <h3 class="section-title">Harapan Pengantin</h3>
-        <p><strong>Pengantin Pria:</strong> Semoga dia menjadi istri dunia akhirat</p>
-        <p><strong>Pengantin Wanita:</strong> Semoga dia menjadi imam yang baik</p>
-      </div>
+      <h3 class="section-title">Harapan Pengantin</h3>
+      <p><strong>Pengantin Pria:</strong> Semoga dia menjadi istri dunia akhirat</p>
+      <p><strong>Pengantin Wanita:</strong> Semoga dia menjadi imam yang baik</p>
     </div>
   </section>
 
-  <!-- Gallery -->
+  <!-- Hadiah -->
+  <section id="hadiah">
+    <div class="panel">
+      <h3 class="section-title">Hadiah</h3>
+      <p class="muted">Doa restu Bapak/Ibu/Saudara(i) adalah hadiah terbaik. Namun bila berkenan mengirim tanda kasih, dapat melalui:</p>
+      <p><strong>BCA</strong><br>
+      <span id="rekening">1234567890</span> a.n. Nama Penerima</p>
+      <button class="btn" onclick="salinRekening()">Salin No. Rek</button>
+
+      <p style="margin-top:18px"><strong>Alamat pengiriman kado:</strong><br>
+      Jl. Contoh Alamat No. 789, Kota, 12345</p>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section id="rsvp">
+    <div class="panel" style="text-align:center">
+      <h3 class="section-title">RSVP</h3>
+      <p class="muted">Mohon konfirmasi kehadiran Anda.</p>
+      <div>
+        <button class="btn-rsvp" onclick="rsvp('Hadir')">✅ Hadir</button>
+        <button class="btn-rsvp" onclick="rsvp('Mungkin')">🤔 Mungkin</button>
+        <button class="btn-rsvp" onclick="rsvp('Tidak Bisa')">❌ Tidak Bisa</button>
+      </div>
+      <p id="rsvpResult" style="margin-top:14px;color:var(--accent)"></p>
+    </div>
+  </section>
+
+  <!-- Galeri -->
   <section id="galeri">
     <div class="panel">
       <h3 class="section-title">Galeri</h3>
-      <div class="gallery-grid">
-        <img src="foto1.jpg" alt="">
-        <img src="foto2.jpg" alt="">
-        <img src="foto3.jpg" alt="">
-      </div>
+      <div>Foto-foto nanti di sini...</div>
     </div>
   </section>
 
-  <!-- Bottom Nav -->
-  <div class="bottom-nav">
-    <div class="nav-item active" data-target="#cover">Cover</div>
-    <div class="nav-item" data-target="#sambutan">Pasangan</div>
-    <div class="nav-item" data-target="#acara">Acara</div>
-    <div class="nav-item" data-target="#galeri">Galeri</div>
-    <div class="nav-item" data-target="#kisah">Kisah</div>
-    <div class="nav-item" data-target="#harapan">Harapan</div>
-  </div>
+<script>
+function salinRekening(){
+  const rek = document.getElementById("rekening").innerText;
+  navigator.clipboard.writeText(rek).then(()=>{
+    alert("Nomor rekening berhasil disalin: " + rek);
+  });
+}
+function rsvp(status){
+  document.getElementById("rsvpResult").innerText = "Terima kasih! Anda memilih: " + status;
+}
+</script>
 
 </body>
-             </html>
+</html>
