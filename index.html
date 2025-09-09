@@ -4,183 +4,122 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Undangan Pernikahan</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
-    * {margin:0; padding:0; box-sizing:border-box;}
-    body {font-family:'Roboto', sans-serif; color:#fff; line-height:1.6; overflow-x:hidden;}
-
-    /* Cover dengan background foto */
-    .cover {
-      height:100vh;
-      display:flex; flex-direction:column; justify-content:center; align-items:center;
-      text-shadow:0 2px 8px rgba(0,0,0,0.7);
-      background: url('foto.jpg') no-repeat center center/cover;
-      position:relative;
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('bg-flower.jpg') no-repeat center center/cover;
+      color: white;
+      text-align: center;
     }
-    .cover::after {
-      content:""; position:absolute; top:0; left:0; right:0; bottom:0;
-      background:rgba(0,0,0,0.4);
+    section {
+      padding: 60px 20px;
+      backdrop-filter: brightness(0.6);
     }
-    .cover h1, .cover p, .cover button {position:relative; z-index:2;}
-    .cover h1 {font-family:'Great Vibes', cursive; font-size:60px;}
-    .cover p {margin-top:10px;}
-    .cover button {
-      margin-top:20px; padding:12px 28px; border:none; border-radius:25px;
-      background:#fff; color:#333; font-weight:bold; cursor:pointer; transition:.3s;
+    h1, h2 {
+      font-family: 'Great Vibes', cursive;
     }
-    .cover button:hover {background:#f3f3f3;}
-
-    section {padding:60px 20px; text-align:center; position:relative; z-index:2;}
-    h2 {font-family:'Great Vibes', cursive; font-size:36px; margin-bottom:20px;}
-
-    /* Countdown */
-    .countdown {display:flex; justify-content:center; gap:20px; margin-top:20px; flex-wrap:wrap;}
-    .time-box {background:rgba(0,0,0,0.5); padding:15px; border-radius:10px; min-width:70px;}
-
-    /* Gallery */
-    .gallery {display:flex; flex-wrap:wrap; justify-content:center;}
-    .gallery img {width:100%; max-width:250px; border-radius:10px; margin:10px; box-shadow:0 4px 10px rgba(0,0,0,0.4);}
-
-    /* Navigasi */
-    nav {
-      position:fixed; bottom:0; left:0; right:0;
-      display:flex; justify-content:space-around;
-      background:rgba(0,0,0,0.6); backdrop-filter: blur(10px);
-      box-shadow:0 -2px 6px rgba(0,0,0,0.3); z-index:99;
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-size: 18px;
     }
-    nav a {
-      padding:10px; flex:1; text-decoration:none;
-      color:#fff; font-size:14px; font-weight:bold;
+    .countdown div {
+      background: rgba(255,255,255,0.1);
+      padding: 10px;
+      border-radius: 10px;
     }
-
-    /* Tombol musik */
-    #music-control {
-      position:fixed; bottom:80px; right:20px; z-index:100;
-      background:rgba(0,0,0,0.6); border:none; border-radius:50%;
-      width:50px; height:50px; display:flex; justify-content:center; align-items:center;
-      cursor:pointer; color:#fff; font-size:20px;
+    .map {
+      margin: 20px 0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .gallery {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding: 20px;
+    }
+    .gallery img {
+      border-radius: 15px;
+      width: 250px;
+      flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
 
-  <!-- Cover -->
-  <section class="cover" id="cover">
-    <h1>Nama Mempelai</h1>
-    <p>Undangan Pernikahan</p>
-    <button onclick="document.getElementById('pasangan').scrollIntoView({behavior:'smooth'})">Buka Undangan</button>
+  <!-- Save The Date -->
+  <section>
+    <h1>Save The Date</h1>
+    <p>Waktu & Tempat</p>
+    <button>Atur Pengingat</button>
   </section>
 
-  <!-- Pasangan -->
-  <section id="pasangan" data-aos="fade-up">
-    <h2>Pasangan</h2>
-    <p>Nama Mempelai Wanita</p>
-    <p>Putri dari Bapak ... & Ibu ...</p>
-    <br>
-    <p>&</p>
-    <br>
-    <p>Nama Mempelai Pria</p>
-    <p>Putra dari Bapak ... & Ibu ...</p>
+  <!-- Sambutan & Nama Pasangan -->
+  <section>
+    <h2>Assalamualaikum Wr Wb</h2>
+    <p>Dengan segala kerendahan hati, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri pernikahan kami</p>
+    <h1>Anissa Maryam</h1>
+    <p>Keluarga bapak Abdul</p>
+    <h1>&</h1>
+    <h1>Hamzah Yusuf</h1>
+    <p>Keluarga bapak Hasan</p>
   </section>
 
   <!-- Countdown -->
-  <section id="countdown" data-aos="fade-up">
-    <h2>Hitung Mundur</h2>
-    <div class="countdown" id="countdown-timer">
-      <div class="time-box"><span id="days">0</span><br>Hari</div>
-      <div class="time-box"><span id="hours">0</span><br>Jam</div>
-      <div class="time-box"><span id="minutes">0</span><br>Menit</div>
-      <div class="time-box"><span id="seconds">0</span><br>Detik</div>
+  <section>
+    <h2>The Wedding Of</h2>
+    <h1>Anissa & Hamzah</h1>
+    <p>Akan diselenggarakan pada:</p>
+    <h2>12 Desember 2024</h2>
+    <div class="countdown">
+      <div>00<br>Hari</div>
+      <div>00<br>Jam</div>
+      <div>00<br>Menit</div>
+      <div>00<br>Detik</div>
     </div>
   </section>
 
-  <!-- Acara -->
-  <section id="acara" data-aos="fade-up">
-    <h2>Detail Acara</h2>
-    <p>Akad Nikah</p>
-    <p>Jumat, 19 September 2025</p>
-    <p>Pukul 09:00 WIB</p>
-    <p>Alamat Lengkap Lokasi</p>
-    <br>
-    <p>Resepsi</p>
-    <p>Jumat, 19 September 2025</p>
-    <p>Pukul 11:00 WIB</p>
-    <p>Alamat Lengkap Lokasi</p>
+  <!-- Detail Acara -->
+  <section>
+    <h2>Resepsi</h2>
+    <p>12 Desember 2024 - Pukul 10:00 WIB</p>
+    <p>Jl. Kusuma Bangsa 05, Rawamangun, Kota Depok</p>
+    <div class="map">
+      <iframe src="https://maps.google.com/maps?q=depok&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="250"></iframe>
+    </div>
+
+    <h2>Ngunduh Mantu</h2>
+    <p>15 Desember 2024 - Pukul 08:00 WIB</p>
+    <div class="map">
+      <iframe src="https://maps.google.com/maps?q=cibadak&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="250"></iframe>
+    </div>
   </section>
 
-  <!-- Cerita -->
-  <section id="cerita" data-aos="fade-up">
-    <h2>Cerita Kami</h2>
-    <div>
-      <h3>Pertemuan Pertama</h3>
-      <p>Kami pertama kali dipertemukan secara sederhana namun penuh makna. Dari pertemuan itu, perlahan tumbuh rasa saling memahami dan saling mendukung.</p>
-    </div>
-    <div style="margin-top:20px;">
-      <h3>Tunangan</h3>
-      <p>Dengan restu orang tua dan doa keluarga, kami memantapkan hati untuk melangkah ke jenjang yang lebih serius. Hari itu menjadi awal perjalanan menuju pernikahan.</p>
-    </div>
+  <!-- Harapan -->
+  <section>
+    <h2>Harapan Pengantin</h2>
+    <p><b>Pengantin Pria:</b> Semoga dia menjadi istri dunia dan akhirat</p>
+    <p><b>Pengantin Wanita:</b> Semoga dia menjadi imam yang baik</p>
   </section>
 
   <!-- Galeri -->
-  <section id="galeri" data-aos="fade-up">
+  <section>
     <h2>Galeri</h2>
     <div class="gallery">
-      <img src="poto1.jpg" alt="">
-      <img src="poto2.jpg" alt="">
-      <img src="poto3.jpg" alt="">
-      <img src="poto4.jpg" alt="">
+      <img src="foto1.jpg" alt="Foto 1">
+      <img src="foto2.jpg" alt="Foto 2">
+      <img src="foto3.jpg" alt="Foto 3">
+      <img src="foto4.jpg" alt="Foto 4">
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer style="padding:20px; background:rgba(0,0,0,0.6); text-align:center;">
-    <p>Terima kasih atas doa & restunya</p>
-  </footer>
-
-  <!-- Navigasi -->
-  <nav>
-    <a href="#cover">Cover</a>
-    <a href="#pasangan">Pasangan</a>
-    <a href="#acara">Acara</a>
-    <a href="#cerita">Cerita</a>
-    <a href="#galeri">Galeri</a>
-  </nav>
-
-  <!-- Musik -->
-  <audio id="bg-music" loop autoplay>
-    <source src="musik.mp3" type="audio/mpeg">
-  </audio>
-  <button id="music-control">⏸</button>
-
-  <!-- Script -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
-
-    // countdown
-    const targetDate = new Date("2025-09-19T09:00:00").getTime();
-    setInterval(function() {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-      document.getElementById("days").innerText = Math.floor(distance / (1000*60*60*24));
-      document.getElementById("hours").innerText = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
-      document.getElementById("minutes").innerText = Math.floor((distance % (1000*60*60))/(1000*60));
-      document.getElementById("seconds").innerText = Math.floor((distance % (1000*60))/1000);
-    }, 1000);
-
-    // kontrol musik
-    const music = document.getElementById("bg-music");
-    const btn = document.getElementById("music-control");
-    btn.addEventListener("click", () => {
-      if(music.paused){
-        music.play();
-        btn.textContent = "⏸";
-      } else {
-        music.pause();
-        btn.textContent = "▶️";
-      }
-    });
-  </script>
 </body>
-    </html>
+        </html>
