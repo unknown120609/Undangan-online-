@@ -1,289 +1,280 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Undangan Pernikahan - Template</title>
-  <meta name="description" content="Undangan Pernikahan Online - Template Satu File" />
-  <style>
-    :root{
-      --bg:#faf7f2;
-      --fg:#2b2b2b;
-      --muted:#6b6b6b;
-      --brand:#7b5f8e;
-      --brand-2:#c7b3d4;
-      --card:#ffffff;
-      --accent:#e8dfef;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--fg)}
-    a{color:var(--brand);text-decoration:none}
-    .container{max-width:980px;margin:0 auto;padding:24px}
-    header.hero{
-      min-height:80vh;
-      display:flex;align-items:center;justify-content:center;
-      background:linear-gradient(180deg,rgba(123,95,142,.12),transparent 60%);
-      text-align:center;
-      position:relative;overflow:hidden;
-    }
-    .chip{display:inline-block;padding:6px 12px;border-radius:999px;background:var(--accent);color:var(--brand);font-weight:600;margin-bottom:8px;font-size:14px}
-    h1{font-size:42px;line-height:1.15;margin:6px 0 10px}
-    h2{font-size:28px;margin:0 0 8px}
-    p.lead{font-size:18px;color:var(--muted);margin:0 0 16px}
-    .names{font-size:48px;letter-spacing:.5px}
-    .amp{color:var(--brand);padding:0 8px}
-    .card{background:var(--card);border:1px solid #ece9f1;border-radius:20px;padding:20px;box-shadow:0 6px 24px rgba(0,0,0,.04)}
-    .grid{display:grid;gap:18px}
-    @media(min-width:800px){ .grid-2{grid-template-columns:1fr 1fr} }
-    .countdown{display:flex;gap:12px;justify-content:center;margin-top:14px;flex-wrap:wrap}
-    .dd{min-width:86px;padding:12px;border-radius:16px;background:#fff;border:1px solid #eee;text-align:center}
-    .dd b{display:block;font-size:26px}
-    .dd span{font-size:12px;color:var(--muted)}
-    section{padding:32px 0}
-    .section-title{font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:10px}
-    .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-    @media(min-width:800px){ .gallery{grid-template-columns:repeat(4,1fr)} }
-    .gallery img{width:100%;height:170px;object-fit:cover;border-radius:16px;border:1px solid #eee;background:#ddd}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:12px;border:1px solid #e7e3ec;background:#fff;font-weight:600}
-    .btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
-    .btn-row{display:flex;gap:12px;flex-wrap:wrap}
-    footer{padding:50px 24px;text-align:center;color:var(--muted)}
-    .timeline{border-left:3px solid var(--accent);padding-left:16px}
-    .timeline .item{margin:10px 0}
-    .bank{display:flex;gap:14px;align-items:center}
-    .bank .logo{width:40px;height:40px;border-radius:10px;background:var(--accent);display:grid;place-items:center;font-weight:700;color:var(--brand)}
-    .map-embed{width:100%;height:320px;border:0;border-radius:16px}
-    .sticky-music{position:fixed;bottom:18px;right:18px}
-    .toast{position:fixed;top:16px;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:10px 16px;border-radius:10px;opacity:0;transition:.4s}
-    .toast.show{opacity:1}
-  </style>
-</head>
-<body>
-  <header class="hero">
-    <div class="container">
-      <div class="chip">Save The Date</div>
-      <div class="names"><span id="namaPria">Nama Mempelai Pria</span><span class="amp">&amp;</span><span id="namaWanita">Nama Mempelai Wanita</span></div>
-      <p class="lead" id="tanggalPernikahanLabel">Sabtu, 20 Desember 2025</p>
-      <div class="countdown" id="countdown">
-        <div class="dd"><b id="cd-days">00</b><span>Hari</span></div>
-        <div class="dd"><b id="cd-hours">00</b><span>Jam</span></div>
-        <div class="dd"><b id="cd-min">00</b><span>Menit</span></div>
-        <div class="dd"><b id="cd-sec">00</b><span>Detik</span></div>
-      </div>
-      <div style="margin-top:18px" class="btn-row">
-        <a class="btn primary" id="btnBukaUndangan" href="#pembuka">Buka Undangan</a>
-        <a class="btn" id="btnCalendar" target="_blank">Tambah ke Kalender</a>
-      </div>
-    </div>
-  </header>
-
-  <main class="container">
-    <section id="pembuka">
-      <div class="grid grid-2">
-        <div class="card">
-          <div class="section-title">Assalamualaikum</div>
-          <h2>Dengan memohon rahmat dan ridho Allah SWT</h2>
-          <p class="lead">Kami bermaksud menyelenggarakan pernikahan putra-putri kami dan dengan segala hormat mengundang Bapak/Ibu/Saudara(i) untuk hadir memberikan doa restu.</p>
-          <div class="btn-row">
-            <a class="btn" id="btnWhatsApp" target="_blank">Konfirmasi via WhatsApp</a>
-            <a class="btn" id="btnMap" target="_blank">Lihat Lokasi</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="section-title">Mempelai</div>
-          <div class="grid">
-            <div>
-              <h3 id="mempelaiPria">Nama Mempelai Pria</h3>
-              <p class="lead" id="ortuPria">Putra dari Bapak ... &amp; Ibu ...</p>
-            </div>
-            <div>
-              <h3 id="mempelaiWanita">Nama Mempelai Wanita</h3>
-              <p class="lead" id="ortuWanita">Putri dari Bapak ... &amp; Ibu ...</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="acara">
-      <div class="section-title">Detail Acara</div>
-      <div class="grid grid-2">
-        <div class="card">
-          <h2>Akad Nikah</h2>
-          <p class="lead" id="akadWaktu">Sabtu, 20 Desember 2025 • 09.00 WIB</p>
-          <p id="akadTempat">Di kediaman mempelai wanita — Jl. Contoh Alamat No. 123, Kota</p>
-        </div>
-        <div class="card">
-          <h2>Resepsi</h2>
-          <p class="lead" id="resepsiWaktu">Sabtu, 20 Desember 2025 • 11.00–14.00 WIB</p>
-          <p id="resepsiTempat">Gedung Serbaguna Harmoni — Jl. Contoh Alamat No. 456, Kota</p>
-        </div>
-      </div>
-      <div style="margin-top:16px" class="card">
-        <iframe class="map-embed" id="mapEmbed" loading="lazy" allowfullscreen></iframe>
-      </div>
-    </section>
-
-    <section id="story">
-      <div class="section-title">Our Story</div>
-      <div class="timeline card">
-        <div class="item"><b>2018</b> — Pertama kali bertemu di kampus.</div>
-        <div class="item"><b>2023</b> — Mulai serius menjalin hubungan.</div>
-        <div class="item"><b>20 Agustus 2025</b> — Acara lamaran keluarga.</div>
-      </div>
-    </section>
-
-    <section id="gallery">
-      <div class="section-title">Galeri</div>
-      <div class="gallery">
-        <img src="" alt="Foto 1 (ganti URL)" />
-        <img src="" alt="Foto 2 (ganti URL)" />
-        <img src="" alt="Foto 3 (ganti URL)" />
-        <img src="" alt="Foto 4 (ganti URL)" />
-      </div>
-    </section>
-
-    <section id="gift">
-      <div class="section-title">Hadiah</div>
-      <div class="card">
-        <p class="lead">Doa restu Bapak/Ibu/Saudara(i) adalah hadiah terbaik. Namun bila berkenan mengirim tanda kasih, dapat melalui:</p>
-        <div class="grid">
-          <div class="bank">
-            <div class="logo">BCA</div>
-            <div>
-              <div><b id="rekBank">1234567890</b> a.n. <span id="namaRek">Nama Penerima</span></div>
-              <button class="btn" onclick="copyText('rekBank')">Salin No. Rek</button>
-            </div>
-          </div>
-          <div>
-            <p>Alamat pengiriman kado:</p>
-            <p id="alamatKado">Jl. Contoh Alamat No. 789, Kota, 12345</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="rsvp">
-      <div class="section-title">RSVP</div>
-      <div class="card">
-        <p class="lead">Mohon konfirmasi kehadiran Anda.</p>
-        <div class="btn-row">
-          <a class="btn primary" id="rsvpHadir" target="_blank">Hadir</a>
-          <a class="btn" id="rsvpMungkin" target="_blank">Mungkin</a>
-          <a class="btn" id="rsvpTidak" target="_blank">Tidak Bisa</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <p>Terima kasih atas doa dan kehadiran Anda.</p>
-      <p>© <span id="tahunNow"></span> — <span id="footerNama">Nama Mempelai Pria &amp; Nama Mempelai Wanita</span></p>
-    </div>
-  </footer>
-
-  <div id="toast" class="toast">Tersalin!</div>
-
-  <script>
-    // ======== KONFIGURASI (EDIT DI SINI) ===========
-    const config = {
-      mempelaiPria: "Nama Mempelai Pria",
-      mempelaiWanita: "Nama Mempelai Wanita",
-      ortuPria: "Putra dari Bapak ... & Ibu ...",
-      ortuWanita: "Putri dari Bapak ... & Ibu ...",
-      tanggalLabel: "Sabtu, 20 Desember 2025",
-      // Format: YYYY-MM-DDTHH:MM:SS+07:00 (WIB)
-      tanggalISO: "2025-12-20T09:00:00+07:00",
-      lokasiMapQuery: "Gedung%20Serbaguna%20Harmoni%2C%20Jakarta",
-      mapEmbedSrc: "https://www.google.com/maps?q=Gedung%20Serbaguna%20Harmoni%2C%20Jakarta&output=embed",
-      akadWaktu: "Sabtu, 20 Desember 2025 • 09.00 WIB",
-      akadTempat: "Di kediaman mempelai wanita — Jl. Contoh Alamat No. 123, Kota",
-      resepsiWaktu: "Sabtu, 20 Desember 2025 • 11.00–14.00 WIB",
-      resepsiTempat: "Gedung Serbaguna Harmoni — Jl. Contoh Alamat No. 456, Kota",
-      whatsappNumber: "6281234567890", // ganti ke nomor WA panitia
-      rsvpMessage: "Halo, saya ingin konfirmasi kehadiran untuk acara pernikahan.",
-      rekening: { bank: "BCA", nomor: "1234567890", nama: "Nama Penerima" },
-      alamatKado: "Jl. Contoh Alamat No. 789, Kota, 12345"
-    };
-    // ================================================
-
-    const $ = (id)=>document.getElementById(id);
-    const qs = (sel)=>document.querySelector(sel);
-
-    function init() {
-      $("namaPria").textContent = config.mempelaiPria;
-      $("namaWanita").textContent = config.mempelaiWanita;
-      $("mempelaiPria").textContent = config.mempelaiPria;
-      $("mempelaiWanita").textContent = config.mempelaiWanita;
-      $("ortuPria").textContent = config.ortuPria;
-      $("ortuWanita").textContent = config.ortuWanita;
-      $("tanggalPernikahanLabel").textContent = config.tanggalLabel;
-      $("akadWaktu").textContent = config.akadWaktu;
-      $("akadTempat").textContent = config.akadTempat;
-      $("resepsiWaktu").textContent = config.resepsiWaktu;
-      $("resepsiTempat").textContent = config.resepsiTempat;
-      $("mapEmbed").src = config.mapEmbedSrc;
-      $("rekBank").textContent = config.rekening.nomor;
-      $("namaRek").textContent = config.rekening.nama;
-      $("alamatKado").textContent = config.alamatKado;
-      $("footerNama").textContent = config.mempelaiPria + " & " + config.mempelaiWanita;
-      $("tahunNow").textContent = new Date().getFullYear();
-
-      // WA buttons
-      const baseWA = "https://wa.me/" + config.whatsappNumber + "?text=" + encodeURIComponent(config.rsvpMessage + " ");
-      $("btnWhatsApp").href = baseWA;
-      $("rsvpHadir").href = baseWA + encodeURIComponent("[Status: Hadir]");
-      $("rsvpMungkin").href = baseWA + encodeURIComponent("[Status: Mungkin]");
-      $("rsvpTidak").href = baseWA + encodeURIComponent("[Status: Tidak Bisa]");
-
-      // Calendar link (Google Calendar)
-      const start = new Date(config.tanggalISO);
-      const end = new Date(start.getTime() + 2*60*60*1000); // +2 jam
-      function fmtCal(dt){
-        const pad = n=>String(n).padStart(2,'0');
-        return dt.getUTCFullYear()+
-          pad(dt.getUTCMonth()+1)+
-          pad(dt.getUTCDate())+"T"+
-          pad(dt.getUTCHours())+
-          pad(dt.getUTCMinutes())+
-          "00Z";
-      }
-      const gcal = "https://www.google.com/calendar/render?action=TEMPLATE" +
-        "&text=" + encodeURIComponent("Pernikahan " + config.mempelaiPria + " & " + config.mempelaiWanita) +
-        "&dates=" + fmtCal(start) + "/" + fmtCal(end) +
-        "&location=" + config.lokasiMapQuery +
-        "&details=" + encodeURIComponent("Mohon doa restu.");
-      $("btnCalendar").href = gcal;
-
-      // Map button (open in Maps)
-      $("btnMap").href = "https://www.google.com/maps/search/?api=1&query=" + config.lokasiMapQuery;
-
-      // Countdown
-      const target = new Date(config.tanggalISO).getTime();
-      setInterval(()=>{
-        const now = new Date().getTime();
-        const diff = Math.max(0, target - now);
-        const d = Math.floor(diff/(1000*60*60*24));
-        const h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-        const m = Math.floor((diff%(1000*60*60))/(1000*60));
-        const s = Math.floor((diff%(1000*60))/1000);
-        $("cd-days").textContent = String(d).padStart(2,'0');
-        $("cd-hours").textContent = String(h).padStart(2,'0');
-        $("cd-min").textContent = String(m).padStart(2,'0');
-        $("cd-sec").textContent = String(s).padStart(2,'0');
-      }, 1000);
-    }
-
-    function copyText(id){
-      const text = $(id).textContent;
-      navigator.clipboard.writeText(text).then(()=>{
-        const t = $("toast"); t.classList.add("show");
-        setTimeout(()=>t.classList.remove("show"), 1500);
-      });
-    }
-
-    document.addEventListener("DOMContentLoaded", init);
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   The Wedding of Mila Karmila and Redi Irawan
+  </title>
+  <script src="https://cdn.tailwindcss.com">
   </script>
-</body>
-</html>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&amp;family=Open+Sans&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Open Sans', sans-serif;
+    }
+    .script-font {
+      font-family: 'Great Vibes', cursive;
+    }
+  </style>
+ </head>
+ <body class="bg-white text-gray-800">
+  <header class="w-full border-b border-gray-300">
+   <nav class="max-w-5xl mx-auto flex items-center justify-between px-4 py-4">
+    <a class="text-2xl font-bold script-font text-pink-600" href="#">
+     Mila &amp; Redi
+    </a>
+    <ul class="hidden md:flex space-x-8 text-gray-700 font-semibold">
+     <li>
+      <a class="hover:text-pink-600 transition" href="#story">
+       Our Story
+      </a>
+     </li>
+     <li>
+      <a class="hover:text-pink-600 transition" href="#event">
+       Event
+      </a>
+     </li>
+     <li>
+      <a class="hover:text-pink-600 transition" href="#gallery">
+       Gallery
+      </a>
+     </li>
+     <li>
+      <a class="hover:text-pink-600 transition" href="#rsvp">
+       RSVP
+      </a>
+     </li>
+     <li>
+      <a class="hover:text-pink-600 transition" href="#contact">
+       Contact
+      </a>
+     </li>
+    </ul>
+    <button class="md:hidden focus:outline-none" id="menu-btn">
+     <i class="fas fa-bars text-2xl text-pink-600">
+     </i>
+    </button>
+   </nav>
+   <div class="hidden md:hidden bg-white border-t border-gray-300" id="mobile-menu">
+    <ul class="flex flex-col space-y-4 px-6 py-6 text-gray-700 font-semibold">
+     <li>
+      <a class="block hover:text-pink-600 transition" href="#story">
+       Our Story
+      </a>
+     </li>
+     <li>
+      <a class="block hover:text-pink-600 transition" href="#event">
+       Event
+      </a>
+     </li>
+     <li>
+      <a class="block hover:text-pink-600 transition" href="#gallery">
+       Gallery
+      </a>
+     </li>
+     <li>
+      <a class="block hover:text-pink-600 transition" href="#rsvp">
+       RSVP
+      </a>
+     </li>
+     <li>
+      <a class="block hover:text-pink-600 transition" href="#contact">
+       Contact
+      </a>
+     </li>
+    </ul>
+   </div>
+  </header>
+  <main class="max-w-5xl mx-auto px-4">
+   <section class="relative mt-8 flex flex-col items-center text-center px-4">
+    <img alt="A romantic wedding portrait of Mila Karmila and Redi Irawan smiling and holding hands in a lush garden with soft natural light" class="rounded-lg shadow-lg w-full max-w-xl object-cover" height="400" loading="lazy" src="https://storage.googleapis.com/a1aa/image/95f83d40-e7c4-4b56-8ff3-c42620fb3b5c.jpg" width="600"/>
+    <h1 class="script-font text-5xl md:text-6xl text-pink-600 mt-8">
+     The Wedding of Mila Karmila &amp; Redi Irawan
+    </h1>
+    <p class="mt-4 text-lg md:text-xl text-gray-600 max-w-3xl">
+     Join us in celebrating the union of two hearts, Mila and Redi, as they begin their journey together.
+    </p>
+   </section>
+   <section class="mt-16 max-w-4xl mx-auto px-4" id="story">
+    <h2 class="text-3xl font-semibold text-pink-600 mb-6 text-center script-font">
+     Our Story
+    </h2>
+    <div class="space-y-6 text-gray-700 text-lg leading-relaxed">
+     <p>
+      Mila Karmila and Redi Irawan first met in a cozy café in Bandung, where a shared love for art and music sparked an instant connection. Over time, their friendship blossomed into a beautiful romance filled with laughter, adventures, and unwavering support.
+     </p>
+     <p>
+      From exploring the vibrant streets of Jakarta to quiet evenings watching sunsets by the beach, every moment together has been a cherished memory. Their love story is a testament to patience, understanding, and the magic of finding your soulmate.
+     </p>
+     <p>
+      Now, surrounded by family and friends, Mila and Redi are ready to embark on the next chapter of their lives as husband and wife.
+     </p>
+    </div>
+   </section>
+   <section class="mt-20 max-w-4xl mx-auto px-4" id="event">
+    <h2 class="text-3xl font-semibold text-pink-600 mb-6 text-center script-font">
+     Wedding Event
+    </h2>
+    <div class="bg-pink-50 rounded-lg shadow-lg p-8 text-gray-800">
+     <div class="flex flex-col md:flex-row md:space-x-12 space-y-8 md:space-y-0 justify-center items-center">
+      <div class="flex-1 text-center md:text-left">
+       <h3 class="text-2xl font-semibold mb-2">
+        Ceremony
+       </h3>
+       <p class="text-lg">
+        Saturday, 15 July 2024
+       </p>
+       <p class="text-lg">
+        10:00 AM - 12:00 PM
+       </p>
+       <p class="mt-2 font-semibold">
+        Masjid Agung Bandung
+       </p>
+       <p>
+        Jl. Asia Afrika No. 123, Bandung, Indonesia
+       </p>
+      </div>
+      <div class="flex-1 text-center md:text-left">
+       <h3 class="text-2xl font-semibold mb-2">
+        Reception
+       </h3>
+       <p class="text-lg">
+        Saturday, 15 July 2024
+       </p>
+       <p class="text-lg">
+        1:00 PM - 5:00 PM
+       </p>
+       <p class="mt-2 font-semibold">
+        Gedung Serbaguna Bandung
+       </p>
+       <p>
+        Jl. Merdeka No. 45, Bandung, Indonesia
+       </p>
+      </div>
+     </div>
+     <div class="mt-8 text-center">
+      <a class="inline-block bg-pink-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-pink-700 transition" href="https://goo.gl/maps/abcd1234efgh5678" rel="noopener noreferrer" target="_blank">
+       <i class="fas fa-map-marker-alt mr-2">
+       </i>
+       View Location on Map
+      </a>
+     </div>
+    </div>
+   </section>
+   <section class="mt-20 max-w-5xl mx-auto px-4" id="gallery">
+    <h2 class="text-3xl font-semibold text-pink-600 mb-6 text-center script-font">
+     Gallery
+    </h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+     <img alt="Mila Karmila and Redi Irawan walking hand in hand on a sandy beach during golden hour with waves gently crashing" class="rounded-lg object-cover w-full h-48" height="400" loading="lazy" src="https://storage.googleapis.com/a1aa/image/0031fec2-4674-4510-0f2d-6b5b8a7a23c7.jpg" width="400"/>
+     <img alt="Engagement photo session of Mila and Redi in a blooming flower garden with soft sunlight filtering through trees" class="rounded-lg object-cover w-full h-48" height="400" loading="lazy" src="https://storage.googleapis.com/a1aa/image/d7fb6f94-d3ee-4785-f495-9f969fe452b3.jpg" width="400"/>
+     <img alt="Traditional wedding ceremony moment with Mila and Redi dressed in elegant Indonesian wedding attire exchanging vows" class="rounded-lg object-cover w-full h-48" height="400" loading="lazy" src="https://storage.googleapis.com/a1aa/image/68ade158-124e-4d56-d1af-dbec74fe02a1.jpg" width="400"/>
+     <img alt="Mila and Redi sharing their first dance at the wedding reception surrounded by family and friends smiling and clapping" class="rounded-lg object-cover w-full h-48" height="400" loading="lazy" src="https://storage.googleapis.com/a1aa/image/564fa853-2637-4d34-f59a-7b7d8d967fcc.jpg" width="400"/>
+     <img alt="Close-up of Mila and Redi laughing together in a candid moment with soft natural light and blurred background" class="rounded-lg object-cover w-full h-48" height="400" loading="lazy" src="https://storage.googleapis.com/a1aa/image/111554d8-07fe-48f9-79a7-3f77004ca240.jpg" width="400"/>
+     <img alt="Mila and Redi cutting their elegant wedding cake decorated with fresh flowers and pastel colors" class="rounded-lg object-cover w-full h-48" height="400" loading="lazy" src="https://storage.googleapis.com/a1aa/image/0b3bf15a-7017-4a8e-eb1e-966c72f472e0.jpg" width="400"/>
+     <img alt="Group family photo with Mila, Redi, and their families smiling and posing in a garden setting" class="rounded-lg object-cover w-full h-48" height="400" loading="lazy" src="https://storage.googleapis.com/a1aa/image/11561205-7c54-4f2c-5c87-abf9371d2283.jpg" width="400"/>
+     <img alt="Close-up of the wedding invitation card featuring elegant calligraphy and floral design in pink and gold" class="rounded-lg object-cover w-full h-48" height="400" loading="lazy" src="https://storage.googleapis.com/a1aa/image/1505103a-2cd3-4919-7471-836e8e8d4f5f.jpg" width="400"/>
+    </div>
+   </section>
+   <section class="mt-20 max-w-3xl mx-auto px-4" id="rsvp">
+    <h2 class="text-3xl font-semibold text-pink-600 mb-6 text-center script-font">
+     RSVP
+    </h2>
+    <form action="#" class="bg-pink-50 rounded-lg shadow-lg p-8 space-y-6" method="POST">
+     <div>
+      <label class="block text-gray-700 font-semibold mb-2" for="name">
+       Full Name
+      </label>
+      <input class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400" id="name" name="name" placeholder="Your full name" required="" type="text"/>
+     </div>
+     <div>
+      <label class="block text-gray-700 font-semibold mb-2" for="email">
+       Email Address
+      </label>
+      <input class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400" id="email" name="email" placeholder="you@example.com" required="" type="email"/>
+     </div>
+     <div>
+      <label class="block text-gray-700 font-semibold mb-2" for="guests">
+       Number of Guests
+      </label>
+      <select class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400" id="guests" name="guests" required="">
+       <option disabled="" selected="" value="">
+        Select number of guests
+       </option>
+       <option value="1">
+        1 (Just me)
+       </option>
+       <option value="2">
+        2
+       </option>
+       <option value="3">
+        3
+       </option>
+       <option value="4">
+        4
+       </option>
+       <option value="5+">
+        5 or more
+       </option>
+      </select>
+     </div>
+     <div>
+      <label class="block text-gray-700 font-semibold mb-2" for="message">
+       Message (Optional)
+      </label>
+      <textarea class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400" id="message" name="message" placeholder="Any wishes or notes for the couple" rows="4"></textarea>
+     </div>
+     <button class="w-full bg-pink-600 text-white font-semibold py-3 rounded hover:bg-pink-700 transition" type="submit">
+      Send RSVP
+     </button>
+    </form>
+   </section>
+   <section class="mt-20 max-w-3xl mx-auto px-4 mb-16 text-center text-gray-700" id="contact">
+    <h2 class="text-3xl font-semibold text-pink-600 mb-6 script-font">
+     Contact Us
+    </h2>
+    <p class="mb-4">
+     For any questions or assistance, please reach out to us:
+    </p>
+    <div class="space-y-4 text-lg">
+     <p>
+      <i class="fas fa-phone-alt text-pink-600 mr-2">
+      </i>
+      <a class="hover:text-pink-600 transition" href="tel:+6281234567890">
+       +62 812-3456-7890 (Mila)
+      </a>
+     </p>
+     <p>
+      <i class="fas fa-phone-alt text-pink-600 mr-2">
+      </i>
+      <a class="hover:text-pink-600 transition" href="tel:+6280987654321">
+       +62 809-8765-4321 (Redi)
+      </a>
+     </p>
+     <p>
+      <i class="fas fa-envelope text-pink-600 mr-2">
+      </i>
+      <a class="hover:text-pink-600 transition" href="mailto:contact@milarediwedding.com">
+       contact@milarediwedding.com
+      </a>
+     </p>
+    </div>
+   </section>
+  </main>
+  <footer class="bg-pink-600 text-white py-6 mt-12">
+   <div class="max-w-5xl mx-auto px-4 text-center text-sm">
+    © 2024 Mila Karmila &amp; Redi Irawan. All rights reserved.
+   </div>
+  </footer>
+  <script>
+   const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+ </body>
+       </html>
+       
