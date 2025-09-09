@@ -21,7 +21,7 @@
   html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;background:#0b0b0b;color:#fff;-webkit-font-smoothing:antialiased}
   a{color:inherit;text-decoration:none}
 
-  /* ---------- Cover (Save The Date) ---------- */
+  /* Cover */
   .cover {
     min-height:100vh;
     display:flex;
@@ -30,242 +30,152 @@
     text-align:center;
     position:relative;
     overflow:hidden;
-    background: center/cover no-repeat url('flower.jpg'); /* GANTI FOTO Latar */
+    background: center/cover no-repeat url('flower.jpg');
   }
   .cover::after{ content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.6)); }
   .cover-inner{ position:relative; z-index:2; padding:28px; max-width:720px; }
   .brand-orn{ width:86px; height:86px; margin:0 auto 12px; display:block; background:rgba(255,255,255,0.06); border-radius:16px; display:flex;align-items:center;justify-content:center}
-  .save-title{ font-family:'Great Vibes',cursive; font-size:42px; letter-spacing:1px; margin:6px 0; color:#fff; text-shadow:0 6px 22px rgba(0,0,0,0.6) }
+  .save-title{ font-family:'Great Vibes',cursive; font-size:42px; margin:6px 0; color:#fff }
   .sub{ color:var(--muted); margin:8px 0 18px; font-size:16px }
-  .btn-ghost{ background:var(--accent); color:#1b0b2b; padding:10px 18px; border-radius:8px; border:none; font-weight:600; cursor:pointer; box-shadow:0 8px 22px rgba(215,184,255,0.12) }
+  .btn-ghost{ background:var(--accent); color:#1b0b2b; padding:10px 18px; border-radius:8px; border:none; font-weight:600; cursor:pointer }
 
-  /* ---------- glass panel for cards ---------- */
-  .panel { background:var(--panel); border-radius:18px; padding:18px; box-shadow:0 10px 40px rgba(0,0,0,0.6); margin:18px auto; max-width:920px; }
+  /* Panel */
+  .panel { background:var(--panel); border-radius:18px; padding:18px; margin:18px auto; max-width:920px; }
 
-  /* ---------- names framed ---------- */
-  .couple-frame{ max-width:420px; margin:0 auto 18px; position:relative; }
-  .frame-box{ background:rgba(255,255,255,0.03); border:6px solid rgba(255,255,255,0.06); padding:18px; border-radius:12px; box-shadow:inset 0 4px 30px rgba(0,0,0,0.6) }
-  .couple-photo{ width:180px; height:180px; border-radius:12px; object-fit:cover; display:block; margin:6px auto 12px; border:6px solid rgba(255,255,255,0.12); background:#222 }
-  .couple-names{ font-family:'Great Vibes',cursive; font-size:34px; margin-top:6px; color:#fff; text-shadow:0 6px 18px rgba(0,0,0,0.6) }
+  /* Couple */
+  .couple-frame{ max-width:420px; margin:0 auto 18px; }
+  .frame-box{ background:rgba(255,255,255,0.03); border:6px solid rgba(255,255,255,0.06); padding:18px; border-radius:12px }
+  .couple-photo{ width:180px; height:180px; border-radius:12px; object-fit:cover; display:block; margin:6px auto 12px; border:6px solid rgba(255,255,255,0.12); }
+  .couple-names{ font-family:'Great Vibes',cursive; font-size:34px; margin-top:6px; color:#fff }
   .parents{ color:var(--muted); font-size:13px; margin-top:8px; }
 
-  /* ---------- Countdown ---------- */
+  /* Countdown */
   .count-wrap{ display:flex; justify-content:center; gap:12px; margin-top:16px; flex-wrap:wrap }
-  .count-item{ background:rgba(255,255,255,0.03); padding:12px 14px; border-radius:10px; min-width:72px; text-align:center; border:1px solid rgba(255,255,255,0.03) }
+  .count-item{ background:rgba(255,255,255,0.03); padding:12px 14px; border-radius:10px; min-width:72px; text-align:center }
   .count-item b{ display:block; font-size:20px; font-weight:700; }
 
-  /* ---------- content sections ---------- */
-  section{ padding:48px 18px; position:relative; }
+  /* Sections */
+  section{ padding:48px 18px; }
   .section-title{ font-family:'Great Vibes',cursive; font-size:28px; margin-bottom:8px; color:#fff }
   .muted{ color:var(--muted); font-size:15px }
 
-  /* ---------- maps embed ---------- */
-  .map-embed{ width:100%; height:260px; border-radius:12px; border:0; box-shadow:0 10px 30px rgba(0,0,0,0.6); overflow:hidden }
+  /* Map */
+  .map-embed{ width:100%; height:260px; border-radius:12px; border:0 }
 
-  /* ---------- wishes ---------- */
+  /* Wishes */
   .wishes{ max-width:760px; margin:12px auto; text-align:center; color:#f0f0f0; font-size:16px }
 
-  /* ---------- gallery slider big framed ---------- */
+  /* Gallery */
   .gallery-hero { max-width:460px; margin:24px auto; position:relative; }
   .hero-frame { border:14px solid rgba(255,255,255,0.06); padding:12px; border-radius:14px; background:rgba(0,0,0,0.25) }
-  .hero-img{ width:100%; height:520px; object-fit:cover; border-radius:8px; display:block; filter:drop-shadow(0 12px 30px rgba(0,0,0,0.6)); }
+  .hero-img{ width:100%; height:520px; object-fit:cover; border-radius:8px }
   .arrow { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.45); border:0; width:48px; height:48px; border-radius:24px; color:#fff; font-size:22px; cursor:pointer }
   .arrow.left{ left:6px } .arrow.right{ right:6px }
-
-  /* ---------- gallery grid many ---------- */
   .gallery-grid { display:grid; gap:12px; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); margin-top:18px; padding:6px }
-  .gallery-grid img { width:100%; height:180px; object-fit:cover; border-radius:12px; cursor:pointer; transition: transform .25s; box-shadow:0 8px 30px rgba(0,0,0,0.6) }
-  .gallery-grid img:hover{ transform:scale(1.04) }
+  .gallery-grid img { width:100%; height:180px; object-fit:cover; border-radius:12px; cursor:pointer }
 
-  /* ---------- right floating actions (Top / Music / Read) ---------- */
-  .right-actions{ position:fixed; right:12px; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:12px; z-index:1200 }
-  .action-btn { background:var(--panel); border-radius:12px; width:48px; height:48px; border:0; color:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 6px 20px rgba(0,0,0,0.6) }
-  .action-btn.small{ width:44px; height:44px }
-
-  /* ---------- bottom navigation bar ---------- */
-  .bottom-nav{ position:fixed; left:12px; right:12px; bottom:12px; height:64px; background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.35)); border-radius:26px; display:flex; align-items:center; justify-content:space-around; z-index:1200; box-shadow:0 10px 30px rgba(0,0,0,0.6) }
+  /* Bottom Nav */
+  .bottom-nav{ position:fixed; left:12px; right:12px; bottom:12px; height:64px; background:rgba(255,255,255,0.05); border-radius:26px; display:flex; align-items:center; justify-content:space-around; z-index:1200 }
   .nav-item{ flex:1; text-align:center; color:var(--muted); font-size:13px; padding:8px; cursor:pointer }
   .nav-item.active{ color:var(--accent); font-weight:600 }
-
-  /* ---------- misc ---------- */
-  footer{ padding:28px 18px; text-align:center; color:var(--muted); font-size:14px; margin-top:24px }
-
-  /* responsive */
-  @media (max-width:720px){
-    .hero-img{ height:420px }
-    .cover h1{ font-size:40px }
-    .cover-inner{ padding:18px }
-  }
-  @media (max-width:420px){
-    .hero-img{ height:340px }
-    .cover h1{ font-size:34px }
-  }
 </style>
 </head>
 <body>
 
-  <!-- Cover / Save The Date -->
+  <!-- Cover -->
   <main class="cover" id="cover">
-    <div class="cover-inner" data-aos="fade-up">
-      <div class="brand-orn"><img src="ornament.png" alt="" style="width:56px;height:56px;opacity:.95"></div>
+    <div class="cover-inner">
+      <div class="brand-orn"><img src="ornament.png" alt="" style="width:56px;height:56px"></div>
       <div class="save-title">Save The Date</div>
       <div class="sub">Waktu Dan Tempat</div>
-      <button class="btn-ghost" id="calendarBtn">📅 Atur Pengingat</button>
-
-      <!-- date block -->
-      <div style="margin-top:26px" class="panel">
-        <div style="font-size:14px;color:var(--muted)">Akad</div>
-        <div style="display:flex;align-items:center;justify-content:center;gap:18px;margin-top:8px;flex-wrap:wrap">
-          <div style="min-width:80px;">
-            <div style="font-size:20px;font-weight:700">19</div>
-            <div style="font-size:12px;color:var(--muted)">September</div>
-          </div>
-          <div style="min-width:140px;text-align:left">
-            <div style="font-size:16px;font-weight:700">Jumat, 19 September 2025</div>
-            <div style="color:var(--muted);font-size:14px">Pukul 09:00 WIB</div>
-            <div style="color:var(--muted);font-size:14px;margin-top:6px">Masjid Agung Contoh</div>
-          </div>
-        </div>
-      </div>
+      <button class="btn-ghost">📅 Atur Pengingat</button>
     </div>
   </main>
 
-  <!-- Greeting + Names -->
-  <section id="sambutan" data-aos="fade-up">
+  <!-- Sambutan -->
+  <section id="sambutan">
     <div class="panel">
-      <div style="max-width:760px;margin:0 auto">
-        <div style="margin-bottom:8px;color:var(--muted)">Assalamualaikum Wr Wb</div>
-        <p style="color:var(--muted);margin-bottom:14px">Dengan segala kerendahan hati, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri pernikahan kami</p>
-
-        <div class="couple-frame" aria-hidden>
-          <div class="frame-box">
-            <img class="couple-photo" src="anna.png" alt="bride"> <!-- GANTI FOTO -->
-            <div class="parents">Keluarga bapak Abdul</div>
-          </div>
-
-          <div style="height:12px"></div>
-
-          <div class="frame-box">
-            <img class="couple-photo" src="hamzah.png" alt="groom"> <!-- GANTI FOTO -->
-            <div class="parents">Keluarga bapak Hasan</div>
-          </div>
-          <div style="margin-top:12px" class="couple-names">Anissa &amp; Hamzah</div>
+      <p class="muted">Dengan segala kerendahan hati, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri pernikahan kami</p>
+      <div class="couple-frame">
+        <div class="frame-box">
+          <img class="couple-photo" src="anna.png" alt="bride">
+          <div class="parents">Keluarga bapak Abdul</div>
         </div>
+        <div style="height:12px"></div>
+        <div class="frame-box">
+          <img class="couple-photo" src="hamzah.png" alt="groom">
+          <div class="parents">Keluarga bapak Hasan</div>
+        </div>
+        <div class="couple-names">Anissa &amp; Hamzah</div>
       </div>
     </div>
   </section>
 
   <!-- Countdown -->
-  <section id="count" data-aos="fade-up">
+  <section id="count">
     <div class="panel">
-      <div style="max-width:780px;margin:0 auto">
-        <div style="margin-bottom:10px;color:var(--muted)">The Wedding Of</div>
-        <div style="font-size:26px;font-weight:700;margin-bottom:14px">Anissa &amp; Hamzah</div>
-
-        <div class="count-wrap" aria-hidden>
-          <div class="count-item"><b id="days">00</b><small>Hari</small></div>
-          <div class="count-item"><b id="hours">00</b><small>Jam</small></div>
-          <div class="count-item"><b id="minutes">00</b><small>Menit</small></div>
-          <div class="count-item"><b id="seconds">00</b><small>Detik</small></div>
-        </div>
+      <div class="count-wrap">
+        <div class="count-item"><b id="days">00</b><small>Hari</small></div>
+        <div class="count-item"><b id="hours">00</b><small>Jam</small></div>
+        <div class="count-item"><b id="minutes">00</b><small>Menit</small></div>
+        <div class="count-item"><b id="seconds">00</b><small>Detik</small></div>
       </div>
     </div>
   </section>
 
-  <!-- Detail Acara (maps) -->
-  <section id="acara" data-aos="fade-up">
+  <!-- Acara -->
+  <section id="acara">
     <div class="panel">
-      <div style="max-width:780px;margin:0 auto;text-align:left">
-        <h3 class="section-title">Resepsi</h3>
-        <p class="muted">12 Desember 2024 • Pukul 10:00 WIB</p>
-        <p class="muted">Jl. Kusuma Bangsa 05, Rawamangun, Kota Depok</p>
-
-        <div style="margin-top:12px">
-          <iframe class="map-embed" src="https://www.google.com/maps/embed?pb=<!--PLACE_COORDS-->"></iframe>
-        </div>
-
-        <h3 class="section-title" style="margin-top:20px">Ngunduh Mantu</h3>
-        <p class="muted">15 Desember 2024 • Pukul 08:00 WIB</p>
-        <p class="muted">Jl. Contoh Alamat, Kota</p>
-
-        <div style="margin-top:12px">
-          <iframe class="map-embed" src="https://www.google.com/maps/embed?pb=<!--PLACE_COORDS_2-->"></iframe>
-        </div>
-      </div>
+      <h3 class="section-title">Resepsi</h3>
+      <p class="muted">12 Desember 2024 • Pukul 10:00 WIB</p>
+      <iframe class="map-embed" src="https://www.google.com/maps/embed?..."></iframe>
     </div>
   </section>
 
   <!-- Kisah -->
-  <section id="kisah" data-aos="fade-up">
+  <section id="kisah">
     <div class="panel">
-      <div style="max-width:760px;margin:0 auto;text-align:left">
-        <h3 class="section-title">Kisah Kami</h3>
-
-        <p class="muted" style="margin-bottom:14px">
-          Tidak ada yang kebetulan di dunia ini. Semua sudah tersusun dengan sangat rapi oleh Sang Maha Kuasa.
-          Kita tidak bisa memilih kepada siapa kita akan jatuh cinta.  
-          Kami bertemu pertama kali pada tahun 2018 saat sama-sama bekerja di perusahaan yang sama.
-        </p>
-
-        <h4 style="color:#fff;margin-top:18px;margin-bottom:6px">• Lamaran</h4>
-        <p class="muted">
-          Kehendaknya menuntun kami pada sebuah pertemuan yang tak pernah disangka hingga akhirnya pada 
-          <strong>20 Agustus 2025</strong> membawa kami pada sebuah ikatan yang diridhoi-Nya.
-        </p>
-
-        <h4 style="color:#fff;margin-top:18px;margin-bottom:6px">• Pernikahan</h4>
-        <p class="muted">
-          Bukan karena bertemu lalu berjodoh, tapi karena berjodohlah kami bisa bertemu.  
-          Kami memutuskan untuk melangsungkan akad nikah pada <strong>19 September 2025</strong>.  
-          Sebagaimana yang pernah dikatakan oleh Ali bin Abi Thalib:  
-          <em>"Apa yang menjadi takdirmu akan menemukan jalannya untuk menemukanmu."</em>
-        </p>
-      </div>
+      <h3 class="section-title">Kisah Kami</h3>
+      <p class="muted">Tidak ada yang kebetulan di dunia ini. Semua sudah tersusun dengan sangat rapi oleh Sang Maha Kuasa...</p>
+      <h4>• Lamaran</h4>
+      <p class="muted">Pada 20 Agustus 2025 kami melangsungkan lamaran...</p>
+      <h4>• Pernikahan</h4>
+      <p class="muted">Kami memutuskan untuk melangsungkan akad nikah pada 19 September 2025...</p>
     </div>
   </section>
 
-  <!-- Wishes -->
-  <section id="harapan" data-aos="fade-up">
+  <!-- Harapan -->
+  <section id="harapan">
     <div class="panel">
       <div class="wishes">
         <h3 class="section-title">Harapan Pengantin</h3>
-        <p><strong>Harapan Pengantin Pria</strong><br>Semoga dia menjadi istri dunia dan akhirat</p>
-        <p style="margin-top:12px"><strong>Harapan Pengantin Wanita</strong><br>Semoga dia menjadi imam yang baik</p>
+        <p><strong>Pengantin Pria:</strong> Semoga dia menjadi istri dunia akhirat</p>
+        <p><strong>Pengantin Wanita:</strong> Semoga dia menjadi imam yang baik</p>
       </div>
     </div>
   </section>
 
-  <!-- Gallery: hero slider + grid -->
-  <section id="galeri" data-aos="fade-up">
+  <!-- Gallery -->
+  <section id="galeri">
     <div class="panel">
       <h3 class="section-title">Galeri</h3>
-
-      <!-- hero slider -->
-      <div class="gallery-hero">
-        <div class="hero-frame">
-          <img id="heroImage" class="hero-img" src="photo1.jpg" alt="hero"> <!-- urutan pertama -->
-        </div>
-        <button class="arrow left" onclick="heroPrev()">❮</button>
-        <button class="arrow right" onclick="heroNext()">❯</button>
-      </div>
-
-      <!-- grid many -->
-      <div class="gallery-grid" id="galleryGrid">
-        <img src="foto1.jpg" alt="" onclick="openLightbox(this.src)">
-        <img src="foto2.jpg" alt="" onclick="openLightbox(this.src)">
-        <img src="foto3.jpg" alt="" onclick="openLightbox(this.src)">
-        <img src="foto4.jpg" alt="" onclick="openLightbox(this.src)">
-        <img src="foto5.jpg" alt="" onclick="openLightbox(this.src)">
-        <img src="foto6.jpg" alt="" onclick="openLightbox(this.src)">
+      <div class="gallery-grid">
+        <img src="foto1.jpg" alt="">
+        <img src="foto2.jpg" alt="">
+        <img src="foto3.jpg" alt="">
       </div>
     </div>
   </section>
 
-  <!-- lightbox -->
-  <div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);align-items:center;justify-content:center;z-index:2000" onclick="closeLightbox()">
-    <img id="lightboxImg" src="" style="max-width:92%;max-height:92%;border-radius:10px;box-shadow:0 12px 40px rgba(0,0,0,0.6)">
+  <!-- Bottom Nav -->
+  <div class="bottom-nav">
+    <div class="nav-item active" data-target="#cover">Cover</div>
+    <div class="nav-item" data-target="#sambutan">Pasangan</div>
+    <div class="nav-item" data-target="#acara">Acara</div>
+    <div class="nav-item" data-target="#galeri">Galeri</div>
+    <div class="nav-item" data-target="#kisah">Kisah</div>
+    <div class="nav-item" data-target="#harapan">Harapan</div>
   </div>
 
-  <!-- Footer & bottom nav -->
-  <footer>
-    <
+</body>
+             </html>
