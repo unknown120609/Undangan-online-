@@ -214,7 +214,7 @@
       <!-- hero slider -->
       <div class="gallery-hero">
         <div class="hero-frame">
-          <img id="heroImage" class="hero-img" src="foto1.jpg" alt="hero"> <!-- urutan pertama -->
+          <img id="heroImage" class="hero-img" src="photo1.jpg" alt="hero"> <!-- urutan pertama -->
         </div>
         <button class="arrow left" onclick="heroPrev()">❮</button>
         <button class="arrow right" onclick="heroNext()">❯</button>
@@ -223,12 +223,12 @@
       <!-- grid many -->
       <div class="gallery-grid" id="galleryGrid">
         <!-- contoh, tambahkan sebanyak foto yang ingin ditampilkan -->
-        <img src="images/foto1.jpg" alt="" onclick="openLightbox(this.src)">
-        <img src="images/foto2.jpg" alt="" onclick="openLightbox(this.src)">
-        <img src="images/foto3.jpg" alt="" onclick="openLightbox(this.src)">
-        <img src="images/foto4.jpg" alt="" onclick="openLightbox(this.src)">
-        <img src="images/foto5.jpg" alt="" onclick="openLightbox(this.src)">
-        <img src="images/foto6.jpg" alt="" onclick="openLightbox(this.src)">
+        <img src="foto1.jpg" alt="" onclick="openLightbox(this.src)">
+        <img src="foto2.jpg" alt="" onclick="openLightbox(this.src)">
+        <img src="foto3.jpg" alt="" onclick="openLightbox(this.src)">
+        <img src="foto4.jpg" alt="" onclick="openLightbox(this.src)">
+        <img src="foto5.jpg" alt="" onclick="openLightbox(this.src)">
+        <img src="foto6.jpg" alt="" onclick="openLightbox(this.src)">
       </div>
     </div>
   </section>
@@ -242,7 +242,7 @@
   <footer>
     <div style="max-width:900px;margin:0 auto">
       <div style="font-size:14px;color:var(--muted)">Terima kasih atas doa & kehadiran Anda</div>
-      <div style="margin-top:8px;font-size:12px;color:var(--muted)">© <span id="yearNow"></span> — [NAMA MEREKA]</div>
+      <div style="margin-top:8px;font-size:12px;color:var(--muted)">© <span id="yearNow"></span> — [nama mempelai]</div>
     </div>
   </footer>
 
@@ -315,9 +315,9 @@
   // Hero slider logic
   const heroImgs = [
     'images1.jpg',
-    'images/poto2.jpg',
-    'images/poto3.jpg',
-    'images/poto4.jpg'
+    'images2.jpg',
+    'images3.jpg',
+    'images4.jpg'
   ]; // urutan foto -> GANTI / TAMBAH sesuai kebutuhan
   let heroIndex = 0;
   const heroEl = document.getElementById('heroImage');
