@@ -1,4 +1,4 @@
-<!doctype html>
+Ok<!doctype html>
 <html lang="id">
 <head>
 <meta charset="utf-8" />
@@ -374,9 +374,9 @@
   const music = document.getElementById('bgMusic');
   const musicBtn = document.getElementById('musicBtn');
   // try to autoplay when user interacts (some browsers block autoplay)
-  document.addEventListener('click', function oncePlay(){
+  document.addEventListener('click', function PlayMusic(){
     if(music.paused){ music.play().catch(()=>{}); musicBtn.textContent='♪'; }
-    document.removeEventListener('click', oncePlay);
+    document.removeEventListener('click', PlayMusic);
   });
   musicBtn.addEventListener('click', ()=>{
     if(music.paused){ music.play(); musicBtn.textContent='▮▮'; } else { music.pause(); musicBtn.textContent='♪'; }
